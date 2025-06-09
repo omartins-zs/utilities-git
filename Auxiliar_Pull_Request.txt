@@ -1,0 +1,33 @@
+
+Vou te mandar uma lista de commits
+
+Essa e a lista de commits:
+
+Criando a File Processing Service de Teste da Cessao
+
+Criando a rota de Registro da CCB
+
+Criando Registro CCB para Validacoes
+
+Criando Cessao Controller B3 em API
+
+Poderia analisar!
+
+Por exemplo pode ter varios ajustes no mesmo arquivo: Criando Ocr, Implemntando Ocr ,Ajustando Ocr, Ajustando Variavel do Ocr preciso que faça um resumo de alteracoes no mesmo arquivo
+
+E Fazer pra mim nesse padrao:
+
+
+O que foi feito:
+
+-
+-
+-
+-
+
+
+Referência:
+Jira: Link do Card no Jira
+
+Pode ser feito em Markdown e dar destque por exemplo em nome de arquivos com a ´´
+
