@@ -226,7 +226,7 @@ Referência oficial:
 ## Regras para Mensagens de Commit
 
 - Máximo de **50 caracteres** na mensagem principal
-- Usar verbo no infinitivo (Criar, Adicionar, Atualizar, Remover)
+- Usar verbo no infinitivo (Criando ou Create, Adicionando ou Add, Atualizando, Removendo)
 - Evitar mensagens genéricas
 - Um commit por responsabilidade
 
