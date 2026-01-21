@@ -1,6 +1,3 @@
-
-## 📌 Template de Descrição do Pull Request
-
 ### 📌 Descrição do Pull Request
 
 ## 🎯 Titulo da tarefa
