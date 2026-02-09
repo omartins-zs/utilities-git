@@ -56,7 +56,18 @@ Listar objetivamente as melhorias, ajustes e implementações realizadas (sem c�
 ---
 
 ## 🧪 Como testar  
-Descrever os passos necessários para validar a alteração.
+
+### Opção 1 – Validação do fluxo principal  
+- Criar um cenário válido em **staging** relacionado à funcionalidade alterada  
+- Executar o fluxo principal impactado por esta mudança  
+- Verificar se o comportamento ocorre conforme o esperado, sem erros ou efeitos colaterais  
+
+### Opção 2 – Validação de cenário de erro / regressão  
+- Simular um cenário que anteriormente gerava erro ou comportamento incorreto  
+- Executar a ação afetada (ex.: criação, edição, exclusão ou processamento de dados)  
+- Confirmar que o erro não ocorre mais e que o sistema responde de forma consistente  
+
+> Observação: os cenários devem ser criados especificamente para teste, sem reutilizar dados de produção.
 
 ---
 
