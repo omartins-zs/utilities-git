@@ -5,6 +5,7 @@
 Este documento define o **padrão oficial para análise de commits** do projeto.
 
 O objetivo é:
+
 - Analisar **todos os arquivos modificados**
 - Identificar corretamente o **tipo de alteração**
 - Gerar **mensagens de commit padronizadas**
@@ -12,7 +13,35 @@ O objetivo é:
 
 ---
 
-## Fluxo de Trabalho
+# ⚠️ Regra Importante — Uso de Emoji
+
+Cada commit deve usar **APENAS 1 emoji** no início da mensagem.
+
+Exemplo correto:
+
+🐛 fix: corrigindo validação de login
+
+ou
+
+:bug: fix: corrigindo validação de login
+
+⚠️ **Nunca usar dois emojis ao mesmo tempo.**
+
+❌ Errado:
+
+🐛 :bug: fix: corrigindo erro
+
+✔️ Correto:
+
+🐛 fix: corrigindo erro
+
+ou
+
+:bug: fix: corrigindo erro
+
+---
+
+# Fluxo de Trabalho
 
 1. Analisar todos os arquivos alterados
 2. Descrever claramente o que mudou em cada arquivo
@@ -22,287 +51,125 @@ O objetivo é:
 
 ---
 
-## Padrão de Commits (iuricode)
+# Padrão de Commits (iuricode)
 
 Referência oficial:
-- https://github.com/iuricode/padroes-de-commits
 
-## Padrões de emojis/Tipos de Commit 💈
-
-<table>
-  <thead>
-    <tr>
-      <th>Tipo do commit</th>
-      <th>Emoji</th>
-      <th>Palavra-chave</th>
-    </tr>
-  </thead>
- <tbody>
-    <tr>
-      <td>Acessibilidade</td>
-      <td>♿ <code>:wheelchair:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Adicionando um teste</td>
-      <td>✅ <code>:white_check_mark:</code></td>
-      <td><code>test</code></td>
-    </tr>
-    <tr>
-      <td>Atualizando a versão de um submódulo</td>
-      <td>⬆️ <code>:arrow_up:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Retrocedendo a versão de um submódulo</td>
-      <td>⬇️ <code>:arrow_down:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Adicionando uma dependência</td>
-      <td>➕ <code>:heavy_plus_sign:</code></td>
-      <td><code>build</code></td>
-    </tr>
-    <tr>
-      <td>Alterações de revisão de código</td>
-      <td>👌 <code>:ok_hand:</code></td>
-      <td><code>style</code></td>
-    </tr>
-    <tr>
-      <td>Animações e transições</td>
-      <td>💫 <code>:dizzy:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Bugfix</td>
-      <td>🐛 <code>:bug:</code></td>
-      <td><code>fix</code></td>
-    </tr>
-    <tr>
-      <td>Comentários</td>
-      <td>💡 <code>:bulb:</code></td>
-      <td><code>docs</code></td>
-    </tr>
-    <tr>
-      <td>Commit inicial</td>
-      <td>🎉 <code>:tada:</code></td>
-      <td><code>init</code></td>
-    </tr>
-    <tr>
-      <td>Configuração</td>
-      <td>🔧 <code>:wrench:</code></td>
-      <td><code>chore</code></td>
-    </tr>
-    <tr>
-      <td>Deploy</td>
-      <td>🚀 <code>:rocket:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Documentação</td>
-      <td>📚 <code>:books:</code></td>
-      <td><code>docs</code></td>
-    </tr>
-    <tr>
-      <td>Em progresso</td>
-      <td>🚧 <code>:construction:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Estilização de interface</td>
-      <td>💄 <code>:lipstick:</code></td>
-      <td><code>feat</code></td>
-    </tr>
-    <tr>
-      <td>Infraestrutura</td>
-      <td>🧱 <code>:bricks:</code></td>
-      <td><code>ci</code></td>
-    </tr>
-    <tr>
-      <td>Lista de ideias (tasks)</td>
-      <td>🔜 <code> :soon: </code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Mover/Renomear</td>
-      <td>🚚 <code>:truck:</code></td>
-      <td><code>chore</code></td>
-    </tr>
-    <tr>
-      <td>Novo recurso</td>
-      <td>✨ <code>:sparkles:</code></td>
-      <td><code>feat</code></td>
-    </tr>
-    <tr>
-      <td>Package.json em JS</td>
-      <td>📦 <code>:package:</code></td>
-      <td><code>build</code></td>
-    </tr>
-    <tr>
-      <td>Performance</td>
-      <td>⚡ <code>:zap:</code></td>
-      <td><code>perf</code></td>
-    </tr>
-    <tr>
-        <td>Refatoração</td>
-        <td>♻️ <code>:recycle:</code></td>
-        <td><code>refactor</code></td>
-    </tr>
-    <tr>
-      <td>Limpeza de Código</td>
-      <td>🧹 <code>:broom:</code></td>
-      <td><code>cleanup</code></td>
-    </tr>
-    <tr>
-      <td>Removendo um arquivo</td>
-      <td>🗑️ <code>:wastebasket:</code></td>
-      <td><code>remove</code></td>
-    </tr>
-    <tr>
-      <td>Removendo uma dependência</td>
-      <td>➖ <code>:heavy_minus_sign:</code></td>
-      <td><code>build</code></td>
-    </tr>
-    <tr>
-      <td>Responsividade</td>
-      <td>📱 <code>:iphone:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Revertendo mudanças</td>
-      <td>💥 <code>:boom:</code></td>
-      <td><code>fix</code></td>
-    </tr>
-    <tr>
-      <td>Segurança</td>
-      <td>🔒️ <code>:lock:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>SEO</td>
-      <td>🔍️ <code>:mag:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Tag de versão</td>
-      <td>🔖 <code>:bookmark:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Teste de aprovação</td>
-      <td>✔️ <code>:heavy_check_mark:</code></td>
-      <td><code>test</code></td>
-    </tr>
-    <tr>
-      <td>Testes</td>
-      <td>🧪 <code>:test_tube:</code></td>
-      <td><code>test</code></td>
-    </tr>
-    <tr>
-      <td>Texto</td>
-      <td>📝 <code>:pencil:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Tipagem</td>
-      <td>🏷️ <code>:label:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Tratamento de erros</td>
-      <td>🥅 <code>:goal_net:</code></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Dados</td>
-      <td>🗃️ <code>:card_file_box:</code></td>
-      <td><code>raw</code></td>
-    </tr>
-  </tbody>
-</table>
+https://github.com/iuricode/padroes-de-commits
 
 ---
 
-## Regras para Mensagens de Commit
+# Tipos de Commit e Emojis
+
+| Tipo | Emoji | Keyword |
+|-----|------|------|
+| Bugfix | 🐛 `:bug:` | `fix` |
+| Novo recurso | ✨ `:sparkles:` | `feat` |
+| Refatoração | ♻️ `:recycle:` | `refactor` |
+| Performance | ⚡ `:zap:` | `perf` |
+| Configuração | 🔧 `:wrench:` | `chore` |
+| Dependências | 📦 `:package:` | `build` |
+| Documentação | 📚 `:books:` | `docs` |
+| Testes | 🧪 `:test_tube:` | `test` |
+| Limpeza de código | 🧹 `:broom:` | `cleanup` |
+| Mover/Renomear | 🚚 `:truck:` | `chore` |
+| Remover arquivo | 🗑️ `:wastebasket:` | `remove` |
+| Deploy | 🚀 `:rocket:` | `deploy` |
+| Segurança | 🔒 `:lock:` | `security` |
+| Infraestrutura / CI | 🧱 `:bricks:` | `ci` |
+| Dados | 🗃️ `:card_file_box:` | `data` |
+| Commit inicial | 🎉 `:tada:` | `init` |
+
+---
+
+# Regras para Mensagens de Commit
 
 - Máximo de **50 caracteres** na mensagem principal
-- Usar verbo no infinitivo (Criando ou Create, Adicionando ou Add, Atualizando, Removendo)
+- Usar verbo no infinitivo
 - Evitar mensagens genéricas
 - Um commit por responsabilidade
+- Sempre usar **1 emoji no início**
 
-Quando houver **muitas alterações relacionadas**, usar:
+Formato recomendado:
 
-- **Mensagem curta**
-- **Descrição detalhada no corpo do commit**
+emoji tipo: descrição
 
----
+Exemplo:
 
-## Exemplos Práticos
-
-### Exemplo 1 — Criação de arquivo
-
-**Arquivo:** `database/seeders/PartidaSeeder.php`
-
-**Análise:**
-Criação de seeder responsável por popular a tabela de partidas para ambiente de desenvolvimento e testes.
-
-**Commit sugerido:**
-
-```
-🔧 :wrench: Criando seeder de partidas
-```
+🐛 fix: corrigindo erro na validação  
+✨ feat: adicionando sistema de convites  
+♻️ refactor: simplificando lógica do controller  
 
 ---
 
-### Exemplo 2 — Alteração simples (coluna)
+# Exemplos Práticos
 
-**Arquivo:** `database/migrations/xxxx_add_quadro_numero_partidas.php`
+## Criação de arquivo
 
-**Análise:**
-Adição da coluna `quadro_numero` para controle interno das partidas.
+Arquivo:
 
-**Commit sugerido:**
+database/seeders/PartidaSeeder.php
 
-```
-🗃️ :card_file_box: Add coluna quadro_numero em partidas
-```
+Análise:
 
----
+Criação de seeder responsável por popular a tabela de partidas.
 
-### Exemplo 3 — Criação de Model
+Commit sugerido:
 
-**Arquivo:** `app/Models/Atleta.php`
-
-**Análise:**
-Criação do model Atleta para representação dos dados de atletas no sistema.
-
-**Commit sugerido:**
-
-```
-🗃️ :card_file_box: Criando model de Atleta
-```
+✨ feat: criando seeder de partidas
 
 ---
 
-## 2ª Parte — Análise Profunda de Commits
+## Alteração simples
+
+Arquivo:
+
+database/migrations/add_quadro_numero_partidas.php
+
+Análise:
+
+Adição da coluna `quadro_numero`.
+
+Commit sugerido:
+
+🗃️ data: adicionando coluna quadro_numero
+
+---
+
+## Criação de Model
+
+Arquivo:
+
+app/Models/Atleta.php
+
+Análise:
+
+Criação do model Atleta.
+
+Commit sugerido:
+
+✨ feat: criando model Atleta
+
+---
+
+# 2ª Parte — Análise Profunda de Commits
 
 Após a validação deste arquivo:
 
 - Os commits serão **executados manualmente**
 - Ajustes finos poderão ser feitos nas mensagens
-- Commits simples podem usar apenas `:chore:` ou tipo equivalente
+- Commits simples podem usar apenas `chore`
 - Commits complexos terão análise técnica mais detalhada
 
 ---
 
-## Observações Finais
+# Observações Finais
 
 - Alterações pequenas devem gerar commits pequenos
 - Evitar misturar migration, model e regra de negócio no mesmo commit
 - Clareza > quantidade
-- Commits contam história do projeto
+- Commits contam a história do projeto
 
 ---
 
 📌 **Este arquivo serve como base oficial para análise e organização dos commits do projeto.**
-
