@@ -1,8 +1,10 @@
 # Padrão de Análise de Commits
 
-## 1ª Parte — Análise de Commits
+---
 
-Este documento define o **padrão oficial para análise de commits** do projeto.
+# 🔹 ANÁLISE 1 — Análise Simples de Commits
+
+Este documento define o **padrão oficial para análise simples de commits** do projeto.
 
 O objetivo é:
 
@@ -13,7 +15,7 @@ O objetivo é:
 
 ---
 
-# ⚠️ Regra Importante — Uso de Emoji
+## ⚠️ Regra Importante — Uso de Emoji
 
 Cada commit deve usar **APENAS 1 emoji** no início da mensagem.
 
@@ -41,17 +43,19 @@ ou
 
 ---
 
-# Fluxo de Trabalho
+## Fluxo de Trabalho
 
-1. Analisar todos os arquivos alterados
-2. Descrever claramente o que mudou em cada arquivo
-3. Classificar a mudança (simples ou complexa)
-4. Sugerir o commit adequado seguindo o padrão abaixo
-5. Consolidar tudo neste arquivo para validação
+1. Analisar todos os arquivos alterados  
+2. Descrever claramente o que mudou em cada arquivo  
+3. Classificar a mudança (simples ou complexa)  
+4. Sugerir o commit adequado seguindo o padrão abaixo  
+5. Consolidar tudo neste arquivo para validação  
+6. Gerar ao final uma **lista com todos os commits sugeridos**  
+7. Informar no final a **quantidade total de commits sugeridos**
 
 ---
 
-# Padrão de Commits (iuricode)
+## Padrão de Commits (iuricode)
 
 Referência oficial:
 
@@ -59,7 +63,7 @@ https://github.com/iuricode/padroes-de-commits
 
 ---
 
-# Tipos de Commit e Emojis
+## Tipos de Commit e Emojis
 
 | Tipo | Emoji | Keyword |
 |-----|------|------|
@@ -82,13 +86,15 @@ https://github.com/iuricode/padroes-de-commits
 
 ---
 
-# Regras para Mensagens de Commit
+## Regras para Mensagens de Commit
 
-- Máximo de **50 caracteres** na mensagem principal
-- Usar verbo no infinitivo
-- Evitar mensagens genéricas
-- Um commit por responsabilidade
-- Sempre usar **1 emoji no início**
+- Máximo de **50 caracteres** na mensagem principal  
+- Usar verbo no infinitivo  
+- Evitar mensagens genéricas  
+- Um commit por responsabilidade  
+- Sempre usar **1 emoji no início**  
+- Consolidar os commits sugeridos em uma **lista final**  
+- Informar no final a **quantidade total de commits**
 
 Formato recomendado:
 
@@ -102,74 +108,149 @@ Exemplo:
 
 ---
 
-# Exemplos Práticos
+## Estrutura Padrão da Análise
 
-## Criação de arquivo
+Cada item analisado deve seguir este formato:
 
-Arquivo:
+### Arquivo
+caminho/do/arquivo.ext
 
+### Análise
+Descrição objetiva do que foi alterado no arquivo.
+
+### Classificação
+- Simples  
+- Complexa  
+
+### Commit sugerido
+✨ feat: exemplo de commit
+
+---
+
+## Exemplos Práticos
+
+### Arquivo
 database/seeders/PartidaSeeder.php
 
-Análise:
-
+**Análise:**  
 Criação de seeder responsável por popular a tabela de partidas.
 
-Commit sugerido:
+**Classificação:**  
+Simples
 
+**Commit sugerido:**  
 ✨ feat: criando seeder de partidas
 
 ---
 
-## Alteração simples
-
-Arquivo:
-
+### Arquivo
 database/migrations/add_quadro_numero_partidas.php
 
-Análise:
-
+**Análise:**  
 Adição da coluna `quadro_numero`.
 
-Commit sugerido:
+**Classificação:**  
+Simples
 
+**Commit sugerido:**  
 🗃️ data: adicionando coluna quadro_numero
 
 ---
 
-## Criação de Model
-
-Arquivo:
-
+### Arquivo
 app/Models/Atleta.php
 
-Análise:
-
+**Análise:**  
 Criação do model Atleta.
 
-Commit sugerido:
+**Classificação:**  
+Simples
 
+**Commit sugerido:**  
 ✨ feat: criando model Atleta
 
 ---
 
-# 2ª Parte — Análise Profunda de Commits
+## Consolidação Final
 
-Após a validação deste arquivo:
+### Lista final de commits sugeridos
 
-- Os commits serão **executados manualmente**
-- Ajustes finos poderão ser feitos nas mensagens
-- Commits simples podem usar apenas `chore`
-- Commits complexos terão análise técnica mais detalhada
+1. ✨ feat: criando seeder de partidas  
+2. 🗃️ data: adicionando coluna quadro_numero  
+3. ✨ feat: criando model Atleta  
 
----
+### Quantidade total de commits
 
-# Observações Finais
-
-- Alterações pequenas devem gerar commits pequenos
-- Evitar misturar migration, model e regra de negócio no mesmo commit
-- Clareza > quantidade
-- Commits contam a história do projeto
+Total de commits sugeridos: 3
 
 ---
 
-📌 **Este arquivo serve como base oficial para análise e organização dos commits do projeto.**
+# 🔹 ANÁLISE 2 — Análise Profunda de Commits
+
+Esta análise é utilizada quando se deseja um nível mais avançado de entendimento do código ou refatorações maiores.
+
+Aqui não basta apenas descrever mudanças, é necessário **entender o impacto real no sistema**.
+
+---
+
+## Fluxo da Análise Profunda
+
+1. Ler completamente o conteúdo de cada arquivo alterado  
+2. Entender o propósito do código (não apenas a mudança)  
+3. Identificar impacto no sistema (regra de negócio, fluxo, arquitetura)  
+4. Agrupar alterações relacionadas em commits coerentes  
+5. Separar responsabilidades corretamente  
+6. Evitar commits genéricos ou mal definidos  
+7. Criar mensagens mais descritivas e técnicas quando necessário  
+8. Validar se os commits contam uma história clara do que foi feito  
+
+---
+
+## Regras da Análise Profunda
+
+- Os commits serão **executados manualmente**  
+- Ajustes finos poderão ser feitos nas mensagens  
+- Commits simples podem usar apenas `chore`  
+- Commits complexos devem ter descrição mais técnica  
+- Pode agrupar arquivos quando fizer sentido lógico  
+- Deve priorizar clareza e organização do histórico  
+
+---
+
+## Boas práticas
+
+- Alterações pequenas devem gerar commits pequenos  
+- Evitar misturar migration, model e regra de negócio no mesmo commit  
+- Clareza > quantidade  
+- Commits contam a história do projeto  
+- Pensar como outro dev entenderia o commit depois  
+
+---
+
+## Diferença entre Análise 1 e Análise 2
+
+| Tipo | Foco |
+|-----|------|
+| Análise 1 | Mudança direta no arquivo |
+| Análise 2 | Entendimento profundo do código |
+
+---
+
+## Exemplo mental
+
+### Análise 1
+
+"Adicionou coluna" → commit direto
+
+### Análise 2
+
+"Adicionou coluna para suportar nova regra de ranking"  
+→ commit mais inteligente e contextual
+
+---
+
+📌 **Este documento define dois níveis de análise:**
+- Simples (rápida e direta)
+- Profunda (técnica e orientada ao sistema)
+
+Escolha o tipo de análise conforme a complexidade do projeto.
