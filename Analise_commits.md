@@ -19,27 +19,37 @@ O objetivo é:
 
 Cada commit deve usar **APENAS 1 emoji** no início da mensagem.
 
-Exemplo correto:
+⚠️ **IMPORTANTE (COMPATIBILIDADE):**
 
-🐛 fix: corrigindo validação de login
+Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visual.
 
-ou
+👉 Portanto, **SEMPRE utilizar o formato com nome do emoji (`:nome:`)**
 
+---
+
+### ✅ Formato obrigatório (recomendado)
+
+```text
 :bug: fix: corrigindo validação de login
+:wrench: chore: ajustando configuração
+:sparkles: feat: adicionando funcionalidade
+```
 
-⚠️ **Nunca usar dois emojis ao mesmo tempo.**
+---
 
-❌ Errado:
+### ⚠️ Formato alternativo (evitar se possível)
 
+```text
+🐛 fix: corrigindo validação de login
+```
+
+---
+
+### ❌ Errado (nunca usar)
+
+```text
 🐛 :bug: fix: corrigindo erro
-
-✔️ Correto:
-
-🐛 fix: corrigindo erro
-
-ou
-
-:bug: fix: corrigindo erro
+```
 
 ---
 
@@ -65,24 +75,24 @@ https://github.com/iuricode/padroes-de-commits
 
 ## Tipos de Commit e Emojis
 
-| Tipo | Emoji | Keyword |
-|-----|------|------|
-| Bugfix | 🐛 `:bug:` | `fix` |
-| Novo recurso | ✨ `:sparkles:` | `feat` |
-| Refatoração | ♻️ `:recycle:` | `refactor` |
-| Performance | ⚡ `:zap:` | `perf` |
-| Configuração | 🔧 `:wrench:` | `chore` |
-| Dependências | 📦 `:package:` | `build` |
-| Documentação | 📚 `:books:` | `docs` |
-| Testes | 🧪 `:test_tube:` | `test` |
-| Limpeza de código | 🧹 `:broom:` | `cleanup` |
-| Mover/Renomear | 🚚 `:truck:` | `chore` |
-| Remover arquivo | 🗑️ `:wastebasket:` | `remove` |
-| Deploy | 🚀 `:rocket:` | `deploy` |
-| Segurança | 🔒 `:lock:` | `security` |
-| Infraestrutura / CI | 🧱 `:bricks:` | `ci` |
-| Dados | 🗃️ `:card_file_box:` | `data` |
-| Commit inicial | 🎉 `:tada:` | `init` |
+| Tipo | Emoji (usar este) | Keyword |
+|-----|------------------|--------|
+| Bugfix | `:bug:` | `fix` |
+| Novo recurso | `:sparkles:` | `feat` |
+| Refatoração | `:recycle:` | `refactor` |
+| Performance | `:zap:` | `perf` |
+| Configuração | `:wrench:` | `chore` |
+| Dependências | `:package:` | `build` |
+| Documentação | `:books:` | `docs` |
+| Testes | `:test_tube:` | `test` |
+| Limpeza de código | `:broom:` | `cleanup` |
+| Mover/Renomear | `:truck:` | `chore` |
+| Remover arquivo | `:wastebasket:` | `remove` |
+| Deploy | `:rocket:` | `deploy` |
+| Segurança | `:lock:` | `security` |
+| Infraestrutura / CI | `:bricks:` | `ci` |
+| Dados | `:card_file_box:` | `data` |
+| Commit inicial | `:tada:` | `init` |
 
 ---
 
@@ -92,19 +102,23 @@ https://github.com/iuricode/padroes-de-commits
 - Usar verbo no infinitivo  
 - Evitar mensagens genéricas  
 - Um commit por responsabilidade  
-- Sempre usar **1 emoji no início**  
+- Sempre usar **1 emoji (formato `:nome:`)**  
 - Consolidar os commits sugeridos em uma **lista final**  
 - Informar no final a **quantidade total de commits**
 
 Formato recomendado:
 
-emoji tipo: descrição
+```text
+:emoji: tipo: descrição
+```
 
 Exemplo:
 
-🐛 fix: corrigindo erro na validação  
-✨ feat: adicionando sistema de convites  
-♻️ refactor: simplificando lógica do controller  
+```text
+:bug: fix: corrigindo erro na validação
+:sparkles: feat: adicionando sistema de convites
+:recycle: refactor: simplificando controller
+```
 
 ---
 
@@ -123,7 +137,7 @@ Descrição objetiva do que foi alterado no arquivo.
 - Complexa  
 
 ### Commit sugerido
-✨ feat: exemplo de commit
+:emoji: tipo: descrição
 
 ---
 
@@ -139,7 +153,7 @@ Criação de seeder responsável por popular a tabela de partidas.
 Simples
 
 **Commit sugerido:**  
-✨ feat: criando seeder de partidas
+:sparkles: feat: criando seeder de partidas
 
 ---
 
@@ -153,7 +167,7 @@ Adição da coluna `quadro_numero`.
 Simples
 
 **Commit sugerido:**  
-🗃️ data: adicionando coluna quadro_numero
+:card_file_box: data: adicionando coluna quadro_numero
 
 ---
 
@@ -167,7 +181,7 @@ Criação do model Atleta.
 Simples
 
 **Commit sugerido:**  
-✨ feat: criando model Atleta
+:sparkles: feat: criando model Atleta
 
 ---
 
@@ -175,21 +189,35 @@ Simples
 
 ### Lista final de commits sugeridos
 
-1. ✨ feat: criando seeder de partidas  
-2. 🗃️ data: adicionando coluna quadro_numero  
-3. ✨ feat: criando model Atleta  
+```text
+1. :sparkles: feat: criando seeder de partidas
+2. :card_file_box: data: adicionando coluna quadro_numero
+3. :sparkles: feat: criando model Atleta
+```
 
 ### Quantidade total de commits
 
+```text
 Total de commits sugeridos: 3
+```
 
 ---
 
 # 🔹 ANÁLISE 2 — Análise Profunda de Commits
 
-Esta análise é utilizada quando se deseja um nível mais avançado de entendimento do código ou refatorações maiores.
+Esta análise é utilizada quando se deseja um nível mais avançado de entendimento do código, geralmente ao trabalhar com IA ou refatorações maiores.
 
 Aqui não basta apenas descrever mudanças, é necessário **entender o impacto real no sistema**.
+
+---
+
+## Quando usar
+
+- Quando estiver usando IA para gerar código  
+- Quando houver muitas alterações complexas  
+- Quando envolver regra de negócio  
+- Quando houver refatorações grandes  
+- Quando precisar de maior precisão nos commits  
 
 ---
 
@@ -236,21 +264,8 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-## Exemplo mental
-
-### Análise 1
-
-"Adicionou coluna" → commit direto
-
-### Análise 2
-
-"Adicionou coluna para suportar nova regra de ranking"  
-→ commit mais inteligente e contextual
-
----
-
 📌 **Este documento define dois níveis de análise:**
 - Simples (rápida e direta)
 - Profunda (técnica e orientada ao sistema)
 
-Escolha o tipo de análise conforme a complexidade do projeto.
+👉 **Sempre priorizar uso de `:emoji:` para evitar erros em terminais e editores.**
