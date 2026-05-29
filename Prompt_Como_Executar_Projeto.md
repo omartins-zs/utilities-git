@@ -13,6 +13,11 @@ Você deve criar TRÊS arquivos de documentação para este projeto:
 **ATENÇÃO:**
 - O projeto é ESTRITAMENTE Laravel.
 - Adaptar comandos e explicações exclusivamente para o ecossistema Laravel (Artisan, Composer, NPM, etc).
+- **ALÉM DE CRIAR A DOCUMENTAÇÃO, você deve configurar/ajustar o projeto para executar via Docker.** O ambiente local é padrão (apenas `php artisan serve` na porta 8000), mas para o Docker você deve:
+  - Criar ou ajustar o arquivo `docker-compose.yml` (ou `compose.yml`) e o `Dockerfile`.
+  - Configurar o container web/nginx na porta `8080:80`.
+  - Configurar o container do banco de dados (MySQL/PostgreSQL) na porta `3308:3306` (ou `5432`).
+  - **Sempre** incluir o container do **PHPMyAdmin** mapeado na porta `8085:80`.
 
 ---
 
@@ -144,6 +149,9 @@ URL de login: [URL]
 E-mail: [E-mail]
 Senha: [Senha]
 ```
+
+- Adicione sempre à lista de acessos do Docker o link do banco de dados:
+`| PHPMyAdmin | http://localhost:8085 |`
 
 ## 6) Logs e Diagnóstico
 
