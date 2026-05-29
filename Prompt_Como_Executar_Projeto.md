@@ -2,16 +2,81 @@
 
 🚀 PROMPT — GERAR DOCUMENTAÇÃO (COMO EXECUTAR)
 
-Você deve criar DOIS arquivos de documentação para este projeto:
+Você deve criar TRÊS arquivos de documentação para este projeto:
 
-1. `docs/COMO_EXECUTAR_LOCAL.md`
-2. `docs/COMO_EXECUTAR_DOCKER.md`
+1. `docs/COMO_EXECUTAR.md`
+2. `docs/COMO_EXECUTAR_LOCAL.md`
+3. `docs/COMO_EXECUTAR_DOCKER.md`
 
 *(Se a pasta `docs/` não existir, você deve criá-la).*
 
 **ATENÇÃO:**
 - O projeto é ESTRITAMENTE Laravel.
 - Adaptar comandos e explicações exclusivamente para o ecossistema Laravel (Artisan, Composer, NPM, etc).
+
+---
+
+# 📙 COMO_EXECUTAR.md
+
+O arquivo `docs/COMO_EXECUTAR.md` será o guia principal e deve seguir estritamente o template abaixo (ajustando apenas o nome do projeto e substituindo os comentários pelas informações reais da aplicação):
+
+```markdown
+# Como Executar — [Nome do Projeto]
+
+Escolha **um** guia conforme seu ambiente:
+
+| Guia | Quando usar |
+| --- | --- |
+| **[COMO_EXECUTAR_LOCAL.md](COMO_EXECUTAR_LOCAL.md)** | Laragon, XAMPP ou `php artisan serve` (SQLite, sem Docker) |
+| **[COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md)** | Docker Desktop (MySQL + Redis, performance otimizada) |
+| [ACESSOS_TESTES.md](ACESSOS_TESTES.md) | Logins demo, URLs e fluxos de teste |
+
+---
+
+## Início rápido
+
+### Local (Laragon)
+
+```bash
+cp .env.example .env
+touch database/database.sqlite
+composer install && npm install
+php artisan key:generate && php artisan migrate --seed
+npm run build && php artisan serve
+```
+
+→ http://127.0.0.1:8000
+
+### Docker
+
+```bash
+cp .env.docker.example .env
+docker compose up -d --build
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
+docker compose exec app npm install && npm run build
+```
+
+→ http://localhost:8080
+
+---
+
+## Logins demo
+
+*(ATENÇÃO IA: Analise os seeders e configurações do projeto e preencha a tabela abaixo com os acessos demo reais. Crie as linhas necessárias para cada perfil.)*
+
+| Perfil | E-mail | Senha |
+| --- | --- | --- |
+| [Nome Perfil 1] | [email 1] | [senha 1] |
+| [Nome Perfil 2] | [email 2] | [senha 2] |
+
+---
+
+## Outros documentos
+
+- [PLANO_IMPLEMENTACAO_CHECKLIST.md](PLANO_IMPLEMENTACAO_CHECKLIST.md) — Checklist do projeto
+```
 
 ---
 
@@ -125,5 +190,5 @@ O arquivo focado na execução local deve seguir uma estrutura semelhante, mas s
 # ⚡ REGRAS FINAIS
 
 - Explicar de forma simples e profissional.
-- Os 2 arquivos devem obrigatoriamente estar dentro da pasta `docs/`.
+- Os 3 arquivos devem obrigatoriamente estar dentro da pasta `docs/`.
 - Foco absoluto em Laravel. Não adicionar comandos de outras linguagens.
