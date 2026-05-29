@@ -29,6 +29,11 @@ O arquivo focado em Docker deve seguir a estrutura abaixo, utilizando as informa
 - Explicar sobre a necessidade de ativar o bloco de Conexão Docker no arquivo `.env` e comentar a parte Local, exemplificando a separação desta forma:
 
 ```env
+
+APP_LOCALE=pt_BR
+APP_FALLBACK_LOCALE=pt_BR
+APP_FAKER_LOCALE=pt_BR
+
 # DOCKER
 DB_CONNECTION=mysql
 DB_HOST=mysql
