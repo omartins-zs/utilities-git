@@ -90,25 +90,7 @@ Listar os arquivos afetados pela mudança.
 ## 🔍 Observações Técnicas  
 Incluir detalhes técnicos relevantes, decisões tomadas, riscos conhecidos e impactos em outras funcionalidades do sistema.
 
----
 
-## Tipo de mudança
-
-- [ ] 🐛 Bug fix
-- [ ] ✨ Nova feature
-- [ ] ♻️ Refatoração
-- [ ] ⚡ Performance
-- [ ] 🔧 Infraestrutura / configuração
-- [ ] 📝 Documentação
-
----
-
-## Checklist
-
-### Geral
-- [ ] Testes unitários passando (`php vendor/bin/pest --configuration phpunit.ci.xml`)
-- [ ] Sem código de debug esquecido (`dd`, `dump`, `var_dump`)
-- [ ] CHANGELOG.md atualizado (se relevante)
 
 ### Se alterou `CACHE_DRIVER`, `SESSION_DRIVER` ou drivers de infra
 - [ ] Revisados middlewares que dependem de cache (throttle, locks)

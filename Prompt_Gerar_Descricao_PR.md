@@ -55,6 +55,26 @@ Listar objetivamente as melhorias, ajustes e implementações realizadas (sem c�
 
 ---
 
+## Tipo de mudança
+
+- [ ] 🐛 Bug fix
+- [ ] ✨ Nova feature
+- [ ] ♻️ Refatoração
+- [ ] ⚡ Performance
+- [ ] 🔧 Infraestrutura / configuração
+- [ ] 📝 Documentação
+
+---
+
+## Checklist
+
+### Geral
+- [ ] Testes unitários passando (`php vendor/bin/pest --configuration phpunit.ci.xml`)
+- [ ] Adicionado algum codigo de debug (`dd`, `dump`, `var_dump`)
+- [ ] CHANGELOG.md atualizado (se relevante)
+
+---
+
 ## 🧪 Como testar  
 
 ### Opção 1 – Validação do fluxo principal  
