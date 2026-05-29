@@ -32,7 +32,7 @@ O arquivo focado em Docker deve seguir a estrutura abaixo, utilizando as informa
 # DOCKER
 DB_CONNECTION=mysql
 DB_HOST=mysql
-DB_PORT=3306
+DB_PORT=3308
 DB_DATABASE=nome-do-database-db
 DB_USERNAME=root_docker
 DB_PASSWORD=password
