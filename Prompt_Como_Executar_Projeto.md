@@ -1,202 +1,668 @@
-# 📄 DOCUMENTAÇÃO (COMO EXECUTAR)
+# 📄 DOCUMENTAÇÃO — COMO EXECUTAR
 
-🚀 PROMPT — GERAR DOCUMENTAÇÃO (COMO EXECUTAR)
+## 🚀 PROMPT — GERAR E CONFIGURAR A DOCUMENTAÇÃO DE EXECUÇÃO
 
-Você deve criar TRÊS arquivos de documentação para este projeto:
+Você deve analisar este projeto Laravel e criar os seguintes arquivos:
 
 1. `docs/COMO_EXECUTAR.md`
 2. `docs/COMO_EXECUTAR_LOCAL.md`
 3. `docs/COMO_EXECUTAR_DOCKER.md`
 
-*(Se a pasta `docs/` não existir, você deve criá-la).*
-
-**ATENÇÃO:**
-- O projeto é ESTRITAMENTE Laravel.
-- Adaptar comandos e explicações exclusivamente para o ecossistema Laravel (Artisan, Composer, NPM, etc).
-- **ALÉM DE CRIAR A DOCUMENTAÇÃO, você deve configurar/ajustar o projeto para executar via Docker.** O ambiente local é padrão (apenas `php artisan serve` na porta 8000), mas para o Docker você deve:
-  - Criar ou ajustar o arquivo `docker-compose.yml` (ou `compose.yml`) e o `Dockerfile`.
-  - Configurar o container web/nginx na porta `8080:80`.
-  - Configurar o container do banco de dados (MySQL/PostgreSQL) na porta `3308:3306` (ou `5432`).
-  - **Sempre** incluir o container do **PHPMyAdmin** mapeado na porta `8085:80`.
+Se a pasta `docs/` não existir, crie-a.
 
 ---
 
-# 📙 COMO_EXECUTAR.md
+# ⚠️ REGRAS GERAIS
 
-O arquivo `docs/COMO_EXECUTAR.md` será o guia principal e deve seguir estritamente o template abaixo (ajustando apenas o nome do projeto e substituindo os comentários pelas informações reais da aplicação):
+- O projeto é **estritamente Laravel**.
+- Utilize somente comandos relacionados ao ecossistema Laravel:
+  - PHP;
+  - Composer;
+  - Artisan;
+  - Node.js;
+  - NPM;
+  - Vite;
+  - MySQL;
+  - Redis, somente se o projeto utilizar;
+  - Docker.
+- Analise antes de documentar:
+  - `composer.json`;
+  - `package.json`;
+  - `.env.example`;
+  - migrations;
+  - seeders;
+  - rotas;
+  - painéis administrativos;
+  - filas;
+  - storage;
+  - serviços utilizados pelo projeto.
+- Não invente:
+  - URLs;
+  - usuários;
+  - senhas;
+  - painéis;
+  - comandos;
+  - containers;
+  - recursos que não existem.
+- Detecte as informações reais do projeto e preencha a documentação.
+- A documentação deve ser simples, visual, organizada e profissional.
+- Não deixar comentários internos como `ATENÇÃO IA` nos arquivos finais.
+- Não deixar textos como `[Nome do Projeto]`, `[URL]`, `[E-mail]` ou outros placeholders.
+- Caso algum recurso não exista, não crie documentação falsa sobre ele.
+- Use títulos, tabelas, blocos de código e divisores para deixar os arquivos fáceis de ler no Markdown.
+
+---
+
+# 🐳 CONFIGURAÇÃO OBRIGATÓRIA DO DOCKER
+
+Além de criar a documentação, configure ou ajuste o projeto para executar com Docker.
+
+Crie ou ajuste, conforme necessário:
+
+- `Dockerfile`;
+- `docker-compose.yml` ou `compose.yml`;
+- configuração do Nginx;
+- `.dockerignore`;
+- `.env.docker.example`, caso ainda não exista.
+
+O ambiente Docker deve possuir obrigatoriamente:
+
+| Serviço | Configuração |
+| --- | --- |
+| Aplicação Laravel | PHP-FPM |
+| Servidor web | Nginx |
+| Aplicação no navegador | `http://localhost:8080` |
+| MySQL no computador | Porta `3308` |
+| MySQL dentro do Docker | Porta `3306` |
+| PHPMyAdmin | `http://localhost:8085` |
+
+Mapeamentos obrigatórios:
+
+```yaml
+nginx:
+  ports:
+    - "8080:80"
+
+mysql:
+  ports:
+    - "3308:3306"
+
+phpmyadmin:
+  ports:
+    - "8085:80"
+```
+
+> Dentro dos containers, o Laravel deve acessar o MySQL utilizando `DB_HOST=mysql` e `DB_PORT=3306`. A porta `3308` é utilizada somente para acessar o banco pelo computador host.
+
+Inclua containers de `worker`, `scheduler` ou `redis` somente quando o projeto realmente utilizar esses recursos.
+
+---
+
+# 📙 1. COMO_EXECUTAR.md
+
+O arquivo `docs/COMO_EXECUTAR.md` será o guia principal.
+
+Ele deve conter obrigatoriamente as seguintes seções.
+
+## Estrutura obrigatória
 
 ```markdown
-# Como Executar — [Nome do Projeto]
+# Como Executar — Nome Real do Projeto
 
 Escolha **um** guia conforme seu ambiente:
 
-| Guia | Quando usar |
-| --- | --- |
-| **[COMO_EXECUTAR_LOCAL.md](COMO_EXECUTAR_LOCAL.md)** | Laragon, XAMPP ou `php artisan serve` (SQLite, sem Docker) |
-| **[COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md)** | Docker Desktop (MySQL + Redis, performance otimizada) |
-| [ACESSOS_TESTES.md](ACESSOS_TESTES.md) | Logins demo, URLs e fluxos de teste |
+| Guia | Quando usar | Requisitos no PC |
+| --- | --- | --- |
+| **[COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md)** | Executar o sistema utilizando containers | Docker Desktop |
+| **[COMO_EXECUTAR_LOCAL.md](COMO_EXECUTAR_LOCAL.md)** | Desenvolver com Laragon, XAMPP ou Artisan | PHP, Composer, Node.js e MySQL |
+| [ACESSOS_TESTES.md](ACESSOS_TESTES.md) | Logins, URLs e fluxos de teste | Apenas se o arquivo existir |
 
 ---
 
 ## Início rápido
 
-### Local (Laragon)
+### Local — Laragon ou XAMPP
 
 ```bash
 cp .env.example .env
-touch database/database.sqlite
-composer install && npm install
-php artisan key:generate && php artisan migrate --seed
-npm run build && php artisan serve
+composer install
+npm install
+php artisan key:generate
+php artisan migrate --seed
+npm run build
+php artisan serve
 ```
 
-→ http://127.0.0.1:8000
+Caso o sistema utilize filas, abrir outro terminal:
+
+```bash
+php artisan queue:work
+```
+
+Aplicação:
+
+http://127.0.0.1:8000
 
 ### Docker
 
 ```bash
 cp .env.docker.example .env
 docker compose up -d --build
-docker compose exec app composer install
-docker compose exec app php artisan key:generate
-docker compose exec app php artisan migrate --seed
-docker compose exec app npm install && npm run build
 ```
 
-→ http://localhost:8080
+Aplicação:
+
+http://localhost:8080
 
 ---
 
 ## Logins demo
 
-*(ATENÇÃO IA: Analise os seeders e configurações do projeto e preencha a tabela abaixo com os acessos demo reais. Crie as linhas necessárias para cada perfil.)*
-
 | Perfil | E-mail | Senha |
 | --- | --- | --- |
-| [Nome Perfil 1] | [email 1] | [senha 1] |
-| [Nome Perfil 2] | [email 2] | [senha 2] |
+| Perfil detectado | E-mail real do seeder | Senha real |
+
+> Analise os seeders e liste os usuários de teste reais. Não invente credenciais.
+
+---
+
+## URLs principais
+
+| Área | Local | Docker |
+| --- | --- | --- |
+| Página inicial | http://127.0.0.1:8000 | http://localhost:8080 |
+| Rota encontrada | URL local real | URL Docker real |
+| Painel administrativo | URL local real | URL Docker real |
+| PHPMyAdmin | — | http://localhost:8085 |
+
+> Analise as rotas e informe as principais páginas do sistema, como página pública, login, cadastro, consulta, painel administrativo ou outros módulos existentes.
 
 ---
 
 ## Outros documentos
 
 - [PLANO_IMPLEMENTACAO_CHECKLIST.md](PLANO_IMPLEMENTACAO_CHECKLIST.md) — Checklist do projeto
+- [IMPLANTACAO_EMPRESA.md](IMPLANTACAO_EMPRESA.md) — Guia de implantação
+- [ACESSOS_TESTES.md](ACESSOS_TESTES.md) — Credenciais e fluxos de teste
 ```
+
+Na seção **Outros documentos**, liste somente arquivos que realmente existirem dentro da pasta `docs/`.
 
 ---
 
-# 📘 COMO_EXECUTAR_DOCKER.md
+# 📘 2. COMO_EXECUTAR_DOCKER.md
 
-O arquivo focado em Docker deve seguir a estrutura abaixo, utilizando as informações do projeto em que você está inserido. Use o modelo a seguir como referência obrigatória para as seções que devem existir:
+O arquivo `docs/COMO_EXECUTAR_DOCKER.md` deve ser focado exclusivamente na execução com Docker.
 
-## Stack e Containers
+Utilize o nome real do projeto.
 
-*(Exemplo de como você deve descrever: O ambiente Docker foi preparado para navegação local estável no Windows. Liste os containers disponíveis no `docker-compose.yml`, como `nginx` na porta `8080`, `app` rodando Laravel em PHP-FPM, `mysql` com volume persistente, `worker`, `scheduler`, etc. Explique se há mapeamento de volumes para `storage`, etc.)*
+## Estrutura obrigatória
+
+```markdown
+# Como Executar com Docker — Nome Real do Projeto
+
+Guia para executar o sistema utilizando Docker Desktop.
+
+---
+
+## Stack e containers
+
+Criar uma tabela explicando os containers reais:
+
+| Container | Função | Porta |
+| --- | --- | --- |
+| nginx | Servidor web | 8080 |
+| app | Aplicação Laravel com PHP-FPM | Interna |
+| mysql | Banco de dados | 3308 |
+| phpmyadmin | Gerenciamento do banco | 8085 |
+
+Adicionar `worker`, `scheduler` e `redis` somente se existirem.
+
+---
 
 ## 1) Preparar ambiente
 
-- Instruir a copiar `.env.example` para `.env`
-- Explicar sobre a necessidade de ativar o bloco de Conexão Docker no arquivo `.env` e comentar a parte Local, exemplificando a separação desta forma:
+```bash
+cp .env.docker.example .env
+```
+
+Apresentar o bloco principal do `.env` Docker:
 
 ```env
+APP_URL=http://localhost:8080
 
 APP_LOCALE=pt_BR
 APP_FALLBACK_LOCALE=pt_BR
 APP_FAKER_LOCALE=pt_BR
 
-# DOCKER
 DB_CONNECTION=mysql
 DB_HOST=mysql
-DB_PORT=3308
-DB_DATABASE=nome-do-database-db
-DB_USERNAME=root_docker
-DB_PASSWORD=password
-
-# LOCAL
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3307
-# DB_DATABASE=nome-do-database-db
-# DB_USERNAME=root
-# DB_PASSWORD=
+DB_PORT=3306
+DB_DATABASE=nome_real_do_banco
+DB_USERNAME=usuario_real_do_docker
+DB_PASSWORD=senha_real_do_docker
 ```
 
-## 2) Subir Containers
+> O Laravel utiliza a porta interna `3306`. A porta `3308` serve para acessar o MySQL diretamente pelo computador.
 
-- Comando para subir a infraestrutura (ex: `docker compose up -d --build`).
-- Comando para verificar o status (`docker compose ps`).
+---
 
-## 3) Inicialização e Migrations
+## 2) Subir containers
 
-- Como instalar dependências via container (ex: `docker compose exec app composer install`).
-- Como gerar a chave (`php artisan key:generate`).
-- Como rodar migrations e seeds (`php artisan migrate:fresh --seed`).
-- Como instalar e buildar dependências de front-end (`npm install`, `npm run build`).
-- Como fazer link do storage (`php artisan storage:link`). (Caso tenha)
+```bash
+docker compose up -d --build
+docker compose ps
+```
 
-## 4) Desenvolvimento e Cache
+---
 
-- Comandos para limpar cache no container (ex: `docker compose exec app php artisan optimize:clear`).
+## 3) Inicialização e migrations
+
+Informe os comandos necessários conforme a configuração real do Docker:
+
+```bash
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
+docker compose exec app npm install
+docker compose exec app npm run build
+```
+
+Caso o projeto utilize arquivos públicos:
+
+```bash
+docker compose exec app php artisan storage:link
+```
+
+Caso as dependências já sejam instaladas automaticamente durante o build, explique isso e não duplique comandos desnecessários.
+
+---
+
+## 4) Desenvolvimento e cache
+
+```bash
+docker compose exec app php artisan optimize:clear
+```
+
+Adicione outros comandos somente se forem úteis para o projeto.
+
+---
 
 ## 5) Acessos
 
-- Detectar e listar os acessos reais do projeto (ex: URL da aplicação base, painéis, banco de dados, etc).
-- Caso o sistema possua seeders que criam usuários de teste ou desenvolvedor, crie um bloco de texto listando as credenciais iniciais usando o formato abaixo:
+Criar uma tabela com as URLs reais:
+
+| Recurso | URL |
+| --- | --- |
+| Aplicação | http://localhost:8080 |
+| Painel administrativo | URL real |
+| PHPMyAdmin | http://localhost:8085 |
+
+### Credenciais de teste
+
+Criar um bloco para cada perfil encontrado nos seeders:
 
 ```txt
-Painel [Nome do Painel ou Perfil]
-URL de login: [URL]
-E-mail: [E-mail]
-Senha: [Senha]
+Nome do Painel ou Perfil
+URL de login: URL real
+E-mail: e-mail real
+Senha: senha real
 ```
 
-- Adicione sempre à lista de acessos do Docker o link do banco de dados:
-`| PHPMyAdmin | http://localhost:8085 |`
+### Acesso ao PHPMyAdmin
 
-## 6) Logs e Diagnóstico
-
-- Como ver logs de todos os containers (`docker compose logs -f`).
-- Como ver logs apenas da aplicação (`docker compose logs -f app`).
-- Como ver o estado do Laravel (`docker compose exec app php artisan about`).
+```txt
+URL: http://localhost:8085
+Servidor: mysql
+Usuário: usuário definido no Docker
+Senha: senha definida no Docker
+```
 
 ---
 
-# 📗 COMO_EXECUTAR_LOCAL.md
+## 6) Logs e diagnóstico
 
-O arquivo focado na execução local deve seguir uma estrutura semelhante, mas sem Docker:
+```bash
+docker compose logs -f
+docker compose logs -f app
+docker compose exec app php artisan about
+```
+
+Caso o container do Nginx, worker ou scheduler tenha outro nome, mostrar os comandos utilizando os nomes reais.
+
+---
+
+## 7) Parar ou reconstruir o ambiente
+
+```bash
+docker compose down
+docker compose down -v
+docker compose up -d --build
+```
+
+> O comando `docker compose down -v` remove os volumes e pode apagar os dados do banco.
+```
+
+---
+
+# 📗 3. COMO_EXECUTAR_LOCAL.md
+
+O arquivo `docs/COMO_EXECUTAR_LOCAL.md` deve seguir obrigatoriamente a estrutura abaixo.
+
+O ambiente local deve utilizar:
+
+- aplicação na porta `8000`;
+- MySQL local na porta `3307`;
+- banco MySQL;
+- usuário local `root`;
+- senha local vazia, salvo se o projeto informar outra configuração.
+
+Não utilizar SQLite neste guia.
+
+## Estrutura obrigatória
+
+```markdown
+# Como Executar Localmente — Nome Real do Projeto
+
+Guia para rodar **sem Docker**, no **Laragon**, **XAMPP** ou com `php artisan serve`.
+
+> **Não quer instalar PHP, Composer ou Node?** Use [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md) — basta Docker Desktop, em qualquer Windows, Mac ou Linux.
+
+---
+
+## Requisitos
+
+Para rodar localmente, você **não precisa** de uma versão específica do Laragon nem instalar o Laravel globalmente.
+
+O essencial é **Composer** + **PHP** compatível — o framework entra no projeto com `composer install`.
+
+Laragon, XAMPP ou `php artisan serve` são apenas formas de subir o ambiente.
+
+| Ferramenta | Obrigatório? | Versão mínima |
+| --- | --- | --- |
+| **Composer** | Sim | 2.x |
+| **PHP** | Sim | 8.3+ |
+| **Node.js** | Sim (assets) | 18+ |
+| **NPM** | Sim (assets) | 9+ |
+| **MySQL** | Sim | 8.0+ |
+
+Extensões PHP necessárias: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`.
+
+### Ambiente de referência (máquina de desenvolvimento)
+
+Stack usada na elaboração deste projeto — **não é requisito fixo**, só referência do que já foi testado:
+
+| Ferramenta | Versão |
+| --- | --- |
+| **Laragon** | **6.0.0** |
+| PHP (via Laragon) | 8.4.6 |
+| Composer | 2.8.12 |
+| Laravel (no projeto) | 13.15.0 |
+| **Node.js** | **22.14.0+** |
+| **NPM** | **11.4.2+** |
+
+Para conferir no seu computador:
+
+```bash
+php -v
+php artisan --version
+composer --version
+node -v
+npm -v
+```
+
+> Esta seção deve ser mantida exatamente com as versões acima em todos os projetos. Não detectar, substituir ou alterar o ambiente de referência.
+
+---
 
 ## 1) Preparar ambiente
 
-- Copiar `.env.example` para `.env`
-- Configurar o banco de dados para acesso local (ex: Laragon na porta 3307).
+### 1.1 Clonar ou acessar o projeto
 
-## 2) Instalar dependências
+```bash
+cd c:/laragon/www/nome-real-da-pasta
+```
 
-- Executar `composer install` e `npm install`.
+Utilize o nome real da pasta do projeto.
 
-## 3) Inicialização e Migrations
+### 1.2 Copiar variáveis de ambiente
 
-- Gerar a chave (`php artisan key:generate`).
-- Rodar banco de dados (`php artisan migrate:fresh --seed`).
-- Link de storage e build (`php artisan storage:link`, `npm run build`). (Caso tenha)
+```bash
+cp .env.example .env
+```
 
-## 4) Rodar aplicação
+No PowerShell:
 
-- Comandos do servidor embutido (`php artisan serve`) e frontend (`npm run dev`).
+```powershell
+Copy-Item .env.example .env
+```
 
-## 5) Filas / Workers (se existir)
+### 1.3 Configurar banco de dados no Laragon
 
-- Comando para workers locais (`php artisan queue:work`).
+Utilize como nome do banco o nome real definido pelo projeto.
 
-## 6) Acessos
+Crie o banco pelo HeidiSQL, PHPMyAdmin ou execute:
 
-- Listar as URLs baseadas no ambiente local (geralmente porta 8000).
-- Replicar a caixa `.txt` com os usuários e senhas de testes.
+```sql
+CREATE DATABASE nome_real_do_banco
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+```
+
+Configure o `.env`:
+
+```env
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=nome_real_do_banco
+DB_USERNAME=root
+DB_PASSWORD=
+
+QUEUE_CONNECTION=database
+MAIL_MAILER=log
+```
+
+> Neste projeto, o MySQL local deve ser configurado na porta **3307**, com usuário `root` e senha vazia, salvo se existir uma configuração local diferente já definida.
+
+Caso o projeto não utilize fila com banco de dados ou não utilize `MAIL_MAILER=log`, ajuste os valores conforme a configuração real.
 
 ---
 
-# ⚡ REGRAS FINAIS
+## 2) Instalar dependências
 
-- Explicar de forma simples e profissional.
-- Os 3 arquivos devem obrigatoriamente estar dentro da pasta `docs/`.
-- Foco absoluto em Laravel. Não adicionar comandos de outras linguagens.
+```bash
+composer install
+npm install
+```
+
+Caso o projeto não possua `package.json`, não incluir o comando `npm install`.
+
+---
+
+## 3) Inicialização e migrations
+
+```bash
+php artisan key:generate
+php artisan migrate --seed
+npm run build
+```
+
+Caso utilize arquivos públicos:
+
+```bash
+php artisan storage:link
+```
+
+Caso o projeto exija reconstrução completa do banco durante o desenvolvimento:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+> O comando `migrate:fresh` apaga todas as tabelas e dados existentes antes de executar novamente as migrations.
+
+---
+
+## 4) Rodar aplicação
+
+```bash
+php artisan serve
+```
+
+Aplicação:
+
+http://127.0.0.1:8000
+
+Para desenvolvimento do frontend, em outro terminal:
+
+```bash
+npm run dev
+```
+
+---
+
+## 5) Filas e workers
+
+Caso o projeto utilize filas:
+
+```bash
+php artisan queue:work
+```
+
+Se existir uma fila específica, informe o comando real.
+
+Caso o projeto não utilize filas:
+
+> Este projeto não exige um worker de filas para a execução básica.
+
+---
+
+## 6) Acessos
+
+Criar uma tabela com as URLs reais encontradas nas rotas:
+
+| Recurso | URL |
+| --- | --- |
+| Página inicial | http://127.0.0.1:8000 |
+| Página pública principal | URL real |
+| Login | URL real |
+| Painel administrativo | URL real |
+
+### Credenciais de teste
+
+Analise os seeders e crie um bloco para cada perfil:
+
+```txt
+Painel Administrativo
+URL de login: http://127.0.0.1:8000/admin
+E-mail: e-mail real
+Senha: senha real
+```
+
+```txt
+Nome do segundo perfil
+URL de login: URL real
+E-mail: e-mail real
+Senha: senha real
+```
+
+Não utilizar credenciais de exemplo quando elas não existirem no projeto.
+
+---
+
+## 7) Comandos úteis
+
+```bash
+php artisan optimize:clear
+php artisan route:list
+php artisan migrate:status
+php artisan about
+php artisan test
+```
+
+Adicionar comandos de filas, scheduler ou ferramentas específicas somente quando existirem no projeto.
+
+---
+
+## 8) Problemas comuns
+
+### Erro de conexão com o banco
+
+Verificar se o MySQL está iniciado e se o `.env` utiliza:
+
+```env
+DB_HOST=127.0.0.1
+DB_PORT=3307
+```
+
+### Chave da aplicação não definida
+
+```bash
+php artisan key:generate
+```
+
+### Alterações no `.env` não foram aplicadas
+
+```bash
+php artisan optimize:clear
+```
+
+### Erro de assets ou Vite Manifest
+
+```bash
+npm install
+npm run build
+```
+
+### Tabelas não encontradas
+
+```bash
+php artisan migrate --seed
+```
+
+Adicione outros problemas somente quando forem relevantes para o projeto.
+
+---
+
+## Próximo passo
+
+Para executar o sistema em ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md).
+```
+
+---
+
+# ✅ VALIDAÇÃO FINAL
+
+Antes de finalizar:
+
+1. Confirmar que os três arquivos foram criados dentro de `docs/`.
+2. Confirmar que o nome real do projeto foi utilizado.
+3. Confirmar que não existem placeholders nos arquivos finais.
+4. Confirmar que os acessos foram retirados dos seeders.
+5. Confirmar que as URLs foram retiradas das rotas reais.
+6. Confirmar que o ambiente local utiliza MySQL na porta `3307`.
+7. Confirmar que o Docker expõe o MySQL como `3308:3306`.
+8. Confirmar que o Laravel dentro do Docker utiliza `DB_PORT=3306`.
+9. Confirmar que o PHPMyAdmin está disponível na porta `8085`.
+10. Confirmar que a aplicação local utiliza a porta `8000`.
+11. Confirmar que a aplicação Docker utiliza a porta `8080`.
+12. Confirmar que o Docker foi realmente configurado, e não apenas documentado.
+13. Confirmar que os comandos apresentados funcionam com os nomes reais dos containers.
+14. Confirmar que o ambiente de referência foi mantido exatamente como definido neste prompt.
+15. Não apagar arquivos ou configurações existentes sem necessidade.
+
+---
+
+# ⚡ RESULTADO ESPERADO
+
+Ao terminar:
+
+- crie ou atualize os três arquivos Markdown;
+- configure ou ajuste o Docker;
+- mantenha a documentação curta e fácil de seguir;
+- não gere explicações excessivas;
+- não crie recursos inexistentes;
+- apresente um resumo curto dos arquivos criados e das configurações realizadas.
