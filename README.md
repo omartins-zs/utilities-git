@@ -74,13 +74,23 @@
 
 ## 📚 Arquivos do Repositório
 
-Este repositório contém diversos arquivos úteis para trabalhar com Git e Pull Requests:
+Este repositório contém diversos arquivos úteis para padronização e automatização com IA:
 
-- 📋 [**Analise_commits.md**](./Analise_commits.md) - Padrão oficial para análise de commits, incluindo tipos de commit, emojis e exemplos práticos
-- 💬 [**Mensagens_Pull_Request.md**](./Mensagens_Pull_Request.md) - Templates e exemplos de mensagens para comunicação em Pull Requests
-- 📝 [**Template_Pull_Request.md**](./Template_Pull_Request.md) - Template estruturado para descrição de Pull Requests com seções para contexto, testes e resultados esperados
-- 📄 [**Template_pull_requests.md**](./Template_pull_requests.md) - Template completo com checklist para solicitantes e revisores de Pull Requests
-- 🛠️ [**Auxiliar_Pull_Request.txt**](./Auxiliar_Pull_Request.txt) - Auxiliar para análise e resumo de commits em Pull Requests
+### 🧩 Prompts para Inteligência Artificial (Cursor / Copilot / ChatGPT)
+- 🚀 [**Prompt_Como_Executar_Projeto.md**](./Prompt_Como_Executar_Projeto.md) - Instruções para IA gerar a documentação de infraestrutura (`COMO_EXECUTAR.md`).
+- 🔐 [**Prompt_Gerar_Acessos_Testes.md**](./Prompt_Gerar_Acessos_Testes.md) - Instruções para IA analisar seeders e listar os logins/rotas de teste.
+- 📋 [**Prompt_Gerar_Plano_Implementacao.md**](./Prompt_Gerar_Plano_Implementacao.md) - Instruções para IA gerar um checklist de implementação.
+- 🐳 [**Prompt_Docker_Local_Env.md**](./Prompt_Docker_Local_Env.md) - Prompt para configuração de ambiente Docker.
+- ⚡ [**Prompt_Performance_Otimizacao_Docker.md**](./Prompt_Performance_Otimizacao_Docker.md) - Prompt de otimização para Docker.
+- 🤖 [**Prompt_Tarefas_Cursor.md**](./Prompt_Tarefas_Cursor.md) e [**Prompt_Rigoroso_Tarefas_Cursor.md**](./Prompt_Rigoroso_Tarefas_Cursor.md) - Diretrizes gerais de código para o Cursor.
+
+### 📝 Pull Requests e Commits
+- 📋 [**Analise_commits.md**](./Analise_commits.md) - Padrão oficial para análise de commits (tipos, emojis, exemplos).
+- 💬 [**Mensagens_Pull_Request.md**](./Mensagens_Pull_Request.md) - Exemplos de mensagens para comunicação em Pull Requests.
+- 📄 [**Template_pull_requests.md**](./Template_pull_requests.md) - Template completo com checklist.
+- 📁 **Templates_PR/**
+  - [**Prompt_Gerar_Descricao_PR.md**](./Templates_PR/Prompt_Gerar_Descricao_PR.md) - Prompt para a IA gerar descrições de PR.
+  - [**Prompt_Template_Descricao_do_Pull_Request.md**](./Templates_PR/Prompt_Template_Descricao_do_Pull_Request.md) - Esqueleto base em markdown.
 
 ---
 
