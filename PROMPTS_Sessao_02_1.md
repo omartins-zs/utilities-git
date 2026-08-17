@@ -1,16 +1,10 @@
-# Prompts — Sessão 02 (2026-08-11)
-
-> Sessão original: *"Poderia fazer rodar esse sistema aí por favor..."* — iniciada em 2026-08-11 às 10h50.
->
-> Numeração original preservada. Os prompts **#5 e #6** não existem no arquivo de origem (gap no registro original) e os prompts **#3** e **#10** têm conteúdo duplicado (o mesmo prompt de documentação de acessos foi reenviado mais tarde na sessão).
-
-Veja o índice navegável em [`README.md`](./README.md).
+# Prompts 
 
 ---
 
-`--- PROMPT #1 ---`
+# --- PROMPT #1 ---
 
-# Dockerizar Sistema com CodeIgniter
+**Dockerizar Sistema com CodeIgniter**
 
 Poderia fazer rodar esse sistema ai por favor quando eu fiz foi feito em outra maquina quero deixar ele dockerizado com o codeigniter para rodar em qualquer maquina por favor....
 
@@ -18,20 +12,20 @@ Poderia fazer rodar esse sistema ai por favor quando eu fiz foi feito em outra m
 
 ---
 
-`--- PROMPT #2 ---`
+# --- PROMPT #2 ---
 
-# Performance e Otimização de Ambiente Docker
+**Performance e Otimização de Ambiente Docker**
 
-## Performance_Otimizacao_Docker
+**Performance_Otimizacao_Docker**
 
-### Objetivo
+**Objetivo**
 Criar uma auditoria e otimização completa de performance para aplicações web em Docker, com foco especial em Laravel/PHP-FPM/Nginx, ambiente local no Windows com Docker Desktop, volumes montados, cache de framework, PHP opcaches, bootstrap de containers e estabilidade do upstream.
 
 Este prompt deve ser usado para pedir que uma IA analise o projeto atual, identifique gargalos reais e aplique otimizações seguras, práticas e reutilizáveis, sem fazer mudanças cosméticas desnecessárias.
 
 ---
 
-### Prompt
+**Prompt**
 
 ```text
 Analise profundamente a infraestrutura Docker e a performance local desta aplicação web e aplique otimizações reais e seguras.
@@ -220,7 +214,7 @@ Quero que você entregue:
 
 ---
 
-### Observacoes praticas para reaproveitar
+**Observacoes praticas para reaproveitar**
 
 Este prompt funciona especialmente bem para projetos com:
 - Laravel + PHP-FPM + Nginx
@@ -230,7 +224,7 @@ Este prompt funciona especialmente bem para projetos com:
 - ambiente Windows com bind mount
 - apps que ficam lentos ao navegar entre telas mesmo sem problema grave no frontend
 
-#### Sinais reais de gargalo que esse prompt ajuda a atacar
+**Sinais reais de gargalo que esse prompt ajuda a atacar**
 - navegacao entre telas levando varios segundos
 - `APP_DEBUG=true` em ambiente local pesado
 - `config` e `routes` sem cache
@@ -240,7 +234,7 @@ Este prompt funciona especialmente bem para projetos com:
 - startup do container lento porque reconstrói cache toda vez
 - primeira requisicao muito lenta apos subir containers
 
-#### Adaptacao rapida para outros stacks
+**Adaptacao rapida para outros stacks**
 Se o projeto nao for Laravel, voce pode trocar no prompt:
 - `php artisan about` por comandos equivalentes do framework
 - `config:cache/route:cache/view:cache` por mecanismos equivalentes
@@ -248,7 +242,7 @@ Se o projeto nao for Laravel, voce pode trocar no prompt:
 
 ---
 
-### Dica de uso
+**Dica de uso**
 Use esse prompt em projetos novos ou legados e peça sempre:
 - diagnostico primeiro
 - alteracoes depois
@@ -260,11 +254,11 @@ Assim voce evita respostas genericas e força a IA a tratar performance como eng
 
 ---
 
-`--- PROMPT #3 [2026-08-11T11:10:09Z] ---`
+# --- PROMPT #3 [2026-08-11T11:10:09Z] ---
 
-# Documentação de Acessos e Testes
+**Documentação de Acessos e Testes**
 
-## 📄 DOCUMENTAÇÃO (ACESSOS E TESTES)
+**📄 DOCUMENTAÇÃO (ACESSOS E TESTES)**
 
 🚀 PROMPT — GERAR ACESSOS DE TESTE
 
@@ -281,7 +275,7 @@ Você deve criar UM arquivo de documentação registrando os acessos e dados de 
 
 ---
 
-## 🔑 ACESSOS_TESTES.md
+**🔑 ACESSOS_TESTES.md**
 
 O arquivo gerado deve seguir estritamente o template abaixo, mesclando todas as informações importantes (substitua o texto entre chaves/colchetes pelos dados reais da aplicação):
 
@@ -348,7 +342,7 @@ php artisan migrate:fresh --seed
 
 ---
 
-## ⚡ REGRAS FINAIS
+**⚡ REGRAS FINAIS**
 
 - Mantenha a formatação exata das tabelas.
 - Puxe os dados reais (senhas, e-mails, rotas) lendo ativamente o código-fonte Laravel atual.
@@ -358,9 +352,9 @@ php artisan migrate:fresh --seed
 
 ---
 
-`--- PROMPT #4 [2026-08-11T11:13:11Z] ---`
+# --- PROMPT #4 [2026-08-11T11:13:11Z] ---
 
-# Tema Claro/Escuro e Refatoração de UI/UX
+**Tema Claro/Escuro e Refatoração de UI/UX**
 
 Quero adicionar tema escuro e tema claro 
 
@@ -371,13 +365,13 @@ Quero fazer uma refatoracao de UI e UX
 
 ---
 
-`--- PROMPT #7 [2026-08-11T17:28:29Z] ---`
+# --- PROMPT #7 [2026-08-11T17:28:29Z] ---
 
-# Padronizar .env, Docker e Documentação de Execução
+**Padronizar .env, Docker e Documentação de Execução**
 
-## 📄 DOCUMENTAÇÃO E AMBIENTE — LARAVEL LOCAL + DOCKER
+**📄 DOCUMENTAÇÃO E AMBIENTE — LARAVEL LOCAL + DOCKER**
 
-### 🚀 PROMPT — PADRONIZAR `.ENV`, DOCKER E DOCUMENTAÇÃO DE EXECUÇÃO
+**🚀 PROMPT — PADRONIZAR `.ENV`, DOCKER E DOCUMENTAÇÃO DE EXECUÇÃO**
 
 Você é um arquiteto de software sênior especialista em **Laravel, Docker, DevOps e ambientes híbridos**.
 
@@ -392,9 +386,9 @@ Não criar verificações manuais dentro do código PHP para descobrir o ambient
 
 ---
 
-## 📦 ARQUIVOS QUE DEVEM SER CRIADOS OU AJUSTADOS
+**📦 ARQUIVOS QUE DEVEM SER CRIADOS OU AJUSTADOS**
 
-### Documentação
+**Documentação**
 
 Criar obrigatoriamente:
 
@@ -404,7 +398,7 @@ Criar obrigatoriamente:
 
 Se a pasta `docs/` não existir, crie-a.
 
-### Ambiente
+**Ambiente**
 
 Criar ou ajustar, conforme necessário:
 
@@ -421,7 +415,7 @@ O projeto deve utilizar o mesmo `.env` nos dois modos, alternando apenas os bloc
 
 ---
 
-## ⚠️ REGRAS GERAIS
+**⚠️ REGRAS GERAIS**
 
 - O projeto é **estritamente Laravel**.
 - Trabalhe somente com o ecossistema utilizado pelo projeto:
@@ -472,7 +466,7 @@ O projeto deve utilizar o mesmo `.env` nos dois modos, alternando apenas os bloc
 
 ---
 
-## 🔄 PADRÃO OBRIGATÓRIO DO `.ENV`
+**🔄 PADRÃO OBRIGATÓRIO DO `.ENV`**
 
 O `.env.example` e o `.env` devem ser organizados com dois blocos:
 
@@ -485,7 +479,7 @@ Por padrão, deixe o bloco **LOCAL ativo** e o bloco **DOCKER comentado**, pois 
 
 Não colocar muitos comentários no `.env`. Utilize somente divisões curtas e claras.
 
-### Exemplo obrigatório — LOCAL ativo
+**Exemplo obrigatório — LOCAL ativo**
 
 Adapte os nomes do banco, usuários e serviços conforme o projeto real:
 
@@ -511,7 +505,7 @@ DB_PASSWORD=
 # DB_PASSWORD=senha_docker
 ```
 
-### Exemplo obrigatório — DOCKER ativo
+**Exemplo obrigatório — DOCKER ativo**
 
 A documentação Docker deve mostrar o bloco invertido:
 
@@ -537,7 +531,7 @@ DB_USERNAME=usuario_docker
 DB_PASSWORD=senha_docker
 ```
 
-### Regras das portas
+**Regras das portas**
 
 | Ambiente | Host do banco | Porta do Laravel |
 | --- | --- | --- |
@@ -557,7 +551,7 @@ Isso significa:
 - Laravel dentro do Docker acessa o serviço `mysql` pela porta interna `3306`;
 - o computador host acessa o MySQL do Docker pela porta `3308`.
 
-### Outros serviços
+**Outros serviços**
 
 Caso existam Redis, Mailpit, filas ou outros serviços, aplique o mesmo padrão.
 
@@ -601,13 +595,13 @@ Somente inclua variáveis de Redis, Mailpit, filas, cache ou outros serviços qu
 
 Depois de alterar o bloco ativo, limpar as configurações:
 
-#### Local
+**Local**
 
 ```bash
 php artisan optimize:clear
 ```
 
-#### Docker
+**Docker**
 
 ```bash
 docker compose exec app php artisan optimize:clear
@@ -615,11 +609,11 @@ docker compose exec app php artisan optimize:clear
 
 ---
 
-## 🐳 CONFIGURAÇÃO OBRIGATÓRIA DO DOCKER
+**🐳 CONFIGURAÇÃO OBRIGATÓRIA DO DOCKER**
 
 Além da documentação, configure o projeto para realmente funcionar via Docker.
 
-### Serviços obrigatórios
+**Serviços obrigatórios**
 
 | Serviço | Função | Porta no computador |
 | --- | --- | --- |
@@ -651,7 +645,7 @@ PMA_HOST=mysql
 PMA_PORT=3306
 ```
 
-### Serviços opcionais
+**Serviços opcionais**
 
 Criar somente quando o projeto utilizar:
 
@@ -662,7 +656,7 @@ Criar somente quando o projeto utilizar:
 
 O worker e o scheduler devem reutilizar a mesma imagem do container `app`.
 
-### Docker Compose
+**Docker Compose**
 
 O Compose deve:
 
@@ -677,7 +671,7 @@ O Compose deve:
 - manter a aplicação acessível em `http://localhost:8080`;
 - manter o PHPMyAdmin em `http://localhost:8085`.
 
-### Dockerfile
+**Dockerfile**
 
 O Dockerfile deve ser criado para Laravel e conter apenas o necessário:
 
@@ -693,7 +687,7 @@ Não usar imagens ou ferramentas de outras stacks.
 
 ---
 
-## 📙 1. `docs/COMO_EXECUTAR.md`
+**📙 1. `docs/COMO_EXECUTAR.md`**
 
 Este será o guia principal e deve possuir a seguinte estrutura:
 
@@ -785,7 +779,7 @@ Na seção **Outros documentos**, listar somente arquivos que realmente existire
 
 ---
 
-## 📗 2. `docs/COMO_EXECUTAR_LOCAL.md`
+**📗 2. `docs/COMO_EXECUTAR_LOCAL.md`**
 
 O arquivo local deve seguir obrigatoriamente esta estrutura:
 
@@ -872,7 +866,7 @@ Deixe o bloco `LOCAL` ativo e o bloco `DOCKER` comentado no `.env`.
 Mostrar o bloco real do projeto seguindo este formato:
 
 ```env
-## LOCAL
+**LOCAL**
 APP_URL=http://127.0.0.1:8000
 
 DB_CONNECTION=mysql
@@ -882,15 +876,15 @@ DB_DATABASE=nome_real_do_banco
 DB_USERNAME=root
 DB_PASSWORD=
 
-## DOCKER
-## APP_URL=http://localhost:8080
+**DOCKER**
+**APP_URL=http://localhost:8080**
 #
-## DB_CONNECTION=mysql
-## DB_HOST=mysql
-## DB_PORT=3306
-## DB_DATABASE=nome_real_do_banco
-## DB_USERNAME=usuario_docker
-## DB_PASSWORD=senha_docker
+**DB_CONNECTION=mysql**
+**DB_HOST=mysql**
+**DB_PORT=3306**
+**DB_DATABASE=nome_real_do_banco**
+**DB_USERNAME=usuario_docker**
+**DB_PASSWORD=senha_docker**
 ```
 
 ### 1.4 Criar o banco de dados
@@ -1049,7 +1043,7 @@ Para ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_D
 
 ---
 
-## 📘 3. `docs/COMO_EXECUTAR_DOCKER.md`
+**📘 3. `docs/COMO_EXECUTAR_DOCKER.md`**
 
 O arquivo Docker deve seguir obrigatoriamente esta estrutura:
 
@@ -1082,17 +1076,17 @@ cp .env.example .env
 Deixe o bloco `DOCKER` ativo e o bloco `LOCAL` comentado:
 
 ```env
-## LOCAL
-## APP_URL=http://127.0.0.1:8000
+**LOCAL**
+**APP_URL=http://127.0.0.1:8000**
 #
-## DB_CONNECTION=mysql
-## DB_HOST=127.0.0.1
-## DB_PORT=3307
-## DB_DATABASE=nome_real_do_banco
-## DB_USERNAME=root
-## DB_PASSWORD=
+**DB_CONNECTION=mysql**
+**DB_HOST=127.0.0.1**
+**DB_PORT=3307**
+**DB_DATABASE=nome_real_do_banco**
+**DB_USERNAME=root**
+**DB_PASSWORD=**
 
-## DOCKER
+**DOCKER**
 APP_URL=http://localhost:8080
 
 DB_CONNECTION=mysql
@@ -1204,7 +1198,7 @@ docker compose down -v
 
 ---
 
-## 🧪 VALIDAÇÃO OBRIGATÓRIA
+**🧪 VALIDAÇÃO OBRIGATÓRIA**
 
 Antes de finalizar, valide:
 
@@ -1241,7 +1235,7 @@ Caso alguma validação não possa ser executada, informe isso claramente no res
 
 ---
 
-## 🎯 RESULTADO ESPERADO
+**🎯 RESULTADO ESPERADO**
 
 Ao terminar:
 
@@ -1263,11 +1257,11 @@ Ao terminar:
 
 ---
 
-`--- PROMPT #8 [2026-08-11T11:50:54Z] ---`
+# --- PROMPT #8 [2026-08-11T11:50:54Z] ---
 
-# Gerador de README Profissional (Padrão Gabriel Martins)
+**Gerador de README Profissional (Padrão Gabriel Martins)**
 
-## 🚀 GERADOR DE README PROFISSIONAL (PADRÃO GABRIEL MARTINS)
+**🚀 GERADOR DE README PROFISSIONAL (PADRÃO GABRIEL MARTINS)**
 
 Você é um especialista em documentação técnica e GitHub README.
 
@@ -1275,7 +1269,7 @@ Sua missão é analisar COMPLETAMENTE o projeto fornecido e gerar um README.md e
 
 ---
 
-## 🔎 ANÁLISE OBRIGATÓRIA DO PROJETO
+**🔎 ANÁLISE OBRIGATÓRIA DO PROJETO**
 
 ANTES de gerar o README, você DEVE:
 
@@ -1297,7 +1291,7 @@ ANTES de gerar o README, você DEVE:
 
 ---
 
-## 🧠 IDENTIFICAÇÃO DE ARQUITETURA (OBRIGATÓRIO)
+**🧠 IDENTIFICAÇÃO DE ARQUITETURA (OBRIGATÓRIO)**
 
 Você DEVE classificar o projeto como:
 
@@ -1309,7 +1303,7 @@ E exibir isso no README.
 
 ---
 
-## ⚠️ REGRA CRÍTICA
+**⚠️ REGRA CRÍTICA**
 
 - ❌ NÃO inventar tecnologia
 - ❌ NÃO criar seção vazia
@@ -1318,7 +1312,7 @@ E exibir isso no README.
 
 ---
 
-## 🎨 PADRÃO VISUAL OBRIGATÓRIO
+**🎨 PADRÃO VISUAL OBRIGATÓRIO**
 
 - Usar emojis em todas as seções
 - Usar `<div align="center">`
@@ -1329,9 +1323,9 @@ E exibir isso no README.
 
 ---
 
-## 🧱 ESTRUTURA DO README
+**🧱 ESTRUTURA DO README**
 
-### 🧠 HEADER COM ÍCONES
+**🧠 HEADER COM ÍCONES**
 
 Criar um `<h1 align="center">` com:
 
@@ -1340,7 +1334,7 @@ Criar um `<h1 align="center">` com:
 
 ---
 
-### 📝 DESCRIÇÃO
+**📝 DESCRIÇÃO**
 
 Texto curto explicando o projeto
 
@@ -1350,13 +1344,13 @@ Depois:
 
 ---
 
-### 🚦 STATUS DO PROJETO
+**🚦 STATUS DO PROJETO**
 
 <h4 align="center"> ✅ Nome do Projeto 🚀 Concluído / Em desenvolvimento ⚙️ </h4>
 
 ---
 
-### 🏗️ ARQUITETURA DO PROJETO
+**🏗️ ARQUITETURA DO PROJETO**
 
 Exibir:
 
@@ -1365,7 +1359,7 @@ Exibir:
 
 ---
 
-### 🔥 PRÉ-REQUISITOS
+**🔥 PRÉ-REQUISITOS**
 
 ⚠️ REGRA IMPORTANTE:
 
@@ -1380,7 +1374,7 @@ Exemplo:
 
 ---
 
-### 🚀 TECNOLOGIAS UTILIZADAS
+**🚀 TECNOLOGIAS UTILIZADAS**
 
 Lista clara com:
 
@@ -1392,21 +1386,21 @@ Lista clara com:
 
 ---
 
-### 🔨 FUNCIONALIDADES
+**🔨 FUNCIONALIDADES**
 
 Listar funcionalidades REAIS do projeto
 
 ---
 
-### 🎯 SOBRE O PROJETO (SEMPRE INCLUIR)
+**🎯 SOBRE O PROJETO (SEMPRE INCLUIR)**
 
-### 🎯 Sobre o Projeto
+**🎯 Sobre o Projeto**
 
 Sistema desenvolvido demonstrando boas práticas de desenvolvimento, arquitetura limpa e organização de código, com foco em escalabilidade e manutenção.
 
 ---
 
-### 📸 PREVIEW DO PROJETO (SEMPRE INCLUIR)
+**📸 PREVIEW DO PROJETO (SEMPRE INCLUIR)**
 
 Se existir imagem ou gif no projeto → usar:
 
@@ -1418,7 +1412,7 @@ Caso NÃO exista:
 
 ---
 
-### 📊 DOCUMENTAÇÃO DA API (SE FOR API)
+**📊 DOCUMENTAÇÃO DA API (SE FOR API)**
 
 Antes de gerar esta seção, você DEVE:
 
@@ -1429,23 +1423,23 @@ Antes de gerar esta seção, você DEVE:
 
 Se existir, documentar:
 
-#### 📁 Documentação do Projeto
+**📁 Documentação do Projeto**
 
 - Se existir pasta `docs/`, mencionar:
   - Estrutura da pasta
   - Arquivos relevantes (ex: API.md, arquitetura.md, etc)
 
-#### 📬 Postman / Collections
+**📬 Postman / Collections**
 
 - Se existir pasta `postman/` ou arquivos `.json`:
   - Listar os arquivos encontrados
   - Explicar como importar no Postman
 
-#### 🌐 Swagger (se existir)
+**🌐 Swagger (se existir)**
 
 - Informar URL (ex: `/api/docs`, `/swagger`, etc)
 
-#### 🖼️ Prints / Imagens (se existir)
+**🖼️ Prints / Imagens (se existir)**
 
 - Exibir imagens do projeto (ex: documentação, telas, etc)
 
@@ -1457,11 +1451,11 @@ Se NÃO existir nenhuma dessas opções:
 
 ---
 
-### 💻 COMANDOS (SEMPRE OBRIGATÓRIO)
+**💻 COMANDOS (SEMPRE OBRIGATÓRIO)**
 
 Gerar comandos baseado na stack:
 
-#### Laravel:
+**Laravel:**
 
     composer install
     cp .env.example .env
@@ -1471,12 +1465,12 @@ Gerar comandos baseado na stack:
     npm install
     npm run dev
 
-#### Node:
+**Node:**
 
     npm install
     npm run dev
 
-#### .NET:
+**.NET:**
 
     dotnet restore
     dotnet build
@@ -1486,7 +1480,7 @@ Gerar comandos baseado na stack:
 
 ---
 
-### ⚠️ IMPORTANTE
+**⚠️ IMPORTANTE**
 
 Sempre adicionar:
 
@@ -1495,13 +1489,13 @@ Sempre adicionar:
 
 ---
 
-### 🧱 ESTRUTURA DO PROJETO (SE RELEVANTE)
+**🧱 ESTRUTURA DO PROJETO (SE RELEVANTE)**
 
 Mostrar estrutura de pastas principais
 
 ---
 
-### 📝 MELHORIAS FUTURAS (SE EXISTIR OU GERAR)
+**📝 MELHORIAS FUTURAS (SE EXISTIR OU GERAR)**
 
 Checklist:
 
@@ -1510,13 +1504,13 @@ Checklist:
 
 ---
 
-### 🖋️ DICAS (OPCIONAL)
+**🖋️ DICAS (OPCIONAL)**
 
 Atalhos, boas práticas, etc
 
 ---
 
-### 📄 FINALIZAÇÃO (SEMPRE OBRIGATÓRIO)
+**📄 FINALIZAÇÃO (SEMPRE OBRIGATÓRIO)**
 
 <div align="center">
 
@@ -1556,20 +1550,20 @@ Analise o projeto fornecido e gere o README completo seguindo TODAS as regras ac
 
 ---
 
-`--- PROMPT #09 [2026-08-11T11:51:36Z] ---`
+# --- PROMPT #09 [2026-08-11T11:51:36Z] ---
 
-# Padrão de Análise de Commits e Push para GitHub
+**Padrão de Análise de Commits e Push para GitHub**
 
 Quero que voce faça a analise e commits e push para um novo repo no meu Github que ja esta logado com o gh
 
 
 Quero que crie Topics e Description e faça tudo nesse padrão
 
-## Padrão de Análise de Commits
+**Padrão de Análise de Commits**
 
 ---
 
-## 🔹 ANÁLISE 1 — Análise Simples de Commits
+**🔹 ANÁLISE 1 — Análise Simples de Commits**
 
 Este documento define o **padrão oficial para análise simples de commits** do projeto.
 
@@ -1582,7 +1576,7 @@ O objetivo é:
 
 ---
 
-### ⚠️ Regra Importante — Uso de Emoji
+**⚠️ Regra Importante — Uso de Emoji**
 
 Cada commit deve usar **APENAS 1 emoji** no início da mensagem.
 
@@ -1594,7 +1588,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-#### ✅ Formato obrigatório (recomendado)
+**✅ Formato obrigatório (recomendado)**
 
 ```text
 :bug: fix: corrigindo validação de login
@@ -1604,7 +1598,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-#### ⚠️ Formato alternativo (evitar se possível)
+**⚠️ Formato alternativo (evitar se possível)**
 
 ```text
 🐛 fix: corrigindo validação de login
@@ -1612,7 +1606,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-#### ❌ Errado (nunca usar)
+**❌ Errado (nunca usar)**
 
 ```text
 🐛 :bug: fix: corrigindo erro
@@ -1620,7 +1614,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-### Fluxo de Trabalho
+**Fluxo de Trabalho**
 
 1. Analisar todos os arquivos alterados  
 2. Descrever claramente o que mudou em cada arquivo  
@@ -1632,7 +1626,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-### Padrão de Commits (iuricode)
+**Padrão de Commits (iuricode)**
 
 Referência oficial:
 
@@ -1640,7 +1634,7 @@ https://github.com/iuricode/padroes-de-commits
 
 ---
 
-### Tipos de Commit e Emojis
+**Tipos de Commit e Emojis**
 
 | Tipo | Emoji (usar este) | Keyword |
 |-----|------------------|--------|
@@ -1663,7 +1657,7 @@ https://github.com/iuricode/padroes-de-commits
 
 ---
 
-### Regras para Mensagens de Commit
+**Regras para Mensagens de Commit**
 
 - Máximo de **50 caracteres** na mensagem principal  
 - Usar verbo no infinitivo  
@@ -1689,28 +1683,28 @@ Exemplo:
 
 ---
 
-### Estrutura Padrão da Análise
+**Estrutura Padrão da Análise**
 
 Cada item analisado deve seguir este formato:
 
-#### Arquivo
+**Arquivo**
 caminho/do/arquivo.ext
 
-#### Análise
+**Análise**
 Descrição objetiva do que foi alterado no arquivo.
 
-#### Classificação
+**Classificação**
 - Simples  
 - Complexa  
 
-#### Commit sugerido
+**Commit sugerido**
 :emoji: tipo: descrição
 
 ---
 
-### Exemplos Práticos
+**Exemplos Práticos**
 
-#### Arquivo
+**Arquivo**
 database/seeders/PartidaSeeder.php
 
 **Análise:**  
@@ -1724,7 +1718,7 @@ Simples
 
 ---
 
-#### Arquivo
+**Arquivo**
 database/migrations/add_quadro_numero_partidas.php
 
 **Análise:**  
@@ -1738,7 +1732,7 @@ Simples
 
 ---
 
-#### Arquivo
+**Arquivo**
 app/Models/Atleta.php
 
 **Análise:**  
@@ -1752,9 +1746,9 @@ Simples
 
 ---
 
-### Consolidação Final
+**Consolidação Final**
 
-#### Lista final de commits sugeridos
+**Lista final de commits sugeridos**
 
 ```text
 1. :sparkles: feat: criando seeder de partidas
@@ -1762,7 +1756,7 @@ Simples
 3. :sparkles: feat: criando model Atleta
 ```
 
-#### Quantidade total de commits
+**Quantidade total de commits**
 
 ```text
 Total de commits sugeridos: 3
@@ -1770,7 +1764,7 @@ Total de commits sugeridos: 3
 
 ---
 
-## 🔹 ANÁLISE 2 — Análise Profunda de Commits
+**🔹 ANÁLISE 2 — Análise Profunda de Commits**
 
 Esta análise é utilizada quando se deseja um nível mais avançado de entendimento do código, geralmente ao trabalhar com IA ou refatorações maiores.
 
@@ -1778,7 +1772,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-### Quando usar
+**Quando usar**
 
 - Quando estiver usando IA para gerar código  
 - Quando houver muitas alterações complexas  
@@ -1788,7 +1782,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-### Fluxo da Análise Profunda
+**Fluxo da Análise Profunda**
 
 1. Ler completamente o conteúdo de cada arquivo alterado  
 2. Entender o propósito do código (não apenas a mudança)  
@@ -1801,7 +1795,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-### Regras da Análise Profunda
+**Regras da Análise Profunda**
 
 - Os commits serão **executados manualmente**  
 - Ajustes finos poderão ser feitos nas mensagens  
@@ -1812,7 +1806,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-### Boas práticas
+**Boas práticas**
 
 - Alterações pequenas devem gerar commits pequenos  
 - Evitar misturar migration, model e regra de negócio no mesmo commit  
@@ -1822,7 +1816,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-### Diferença entre Análise 1 e Análise 2
+**Diferença entre Análise 1 e Análise 2**
 
 | Tipo | Foco |
 |-----|------|
@@ -1841,11 +1835,11 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-`--- PROMPT #10 [2026-08-11T17:28:29Z] ---`
+# --- PROMPT #10 [2026-08-11T17:28:29Z] ---
 
-# Documentação de Acessos e Testes (revisão)
+**Documentação de Acessos e Testes (revisão)**
 
-## 📄 DOCUMENTAÇÃO (ACESSOS E TESTES)
+**📄 DOCUMENTAÇÃO (ACESSOS E TESTES)**
 
 🚀 PROMPT — GERAR ACESSOS DE TESTE
 
@@ -1862,7 +1856,7 @@ Você deve criar UM arquivo de documentação registrando os acessos e dados de 
 
 ---
 
-## 🔑 ACESSOS_TESTES.md
+**🔑 ACESSOS_TESTES.md**
 
 O arquivo gerado deve seguir estritamente o template abaixo, mesclando todas as informações importantes (substitua o texto entre chaves/colchetes pelos dados reais da aplicação):
 
@@ -1929,7 +1923,7 @@ php artisan migrate:fresh --seed
 
 ---
 
-## ⚡ REGRAS FINAIS
+**⚡ REGRAS FINAIS**
 
 - Mantenha a formatação exata das tabelas.
 - Puxe os dados reais (senhas, e-mails, rotas) lendo ativamente o código-fonte Laravel atual.
