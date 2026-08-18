@@ -294,7 +294,6 @@ Você deve criar UM arquivo de documentação registrando os acessos e dados de 
 
 O arquivo gerado deve seguir estritamente o template abaixo, mesclando todas as informações importantes (substitua o texto entre chaves/colchetes pelos dados reais da aplicação):
 
-````markdown
 🔐 Acessos e Dados de Teste
 
 Utilize as credenciais abaixo para testar as diferentes visões e permissões do sistema. Todos os usuários e registros foram gerados automaticamente via *Seeders*.
@@ -353,7 +352,6 @@ php artisan migrate:fresh --seed
 📝 Observações:
 - O banco de dados geralmente é alimentado com registros retroativos e informações simuladas vinculadas a esses usuários para facilitar a visualização, filtragem na tela de relatórios e validação dos fluxos.
 - Use estas credenciais **apenas** em ambiente local ou Docker de desenvolvimento.
-````
 
 ---
 
@@ -372,7 +370,6 @@ php artisan migrate:fresh --seed
 **Tema Claro/Escuro e Refatoração de UI/UX**
 
 Quero adicionar tema escuro e tema claro 
-
 
 Quero fazer uma refatoracao de UI e UX 
 
@@ -706,8 +703,7 @@ Não usar imagens ou ferramentas de outras stacks.
 
 Este será o guia principal e deve possuir a seguinte estrutura:
 
-````markdown
-# Como Executar — Nome Real do Projeto
+**Como Executar — Nome Real do Projeto**
 
 Escolha **um** guia conforme seu ambiente:
 
@@ -719,9 +715,9 @@ Escolha **um** guia conforme seu ambiente:
 
 ---
 
-## Início rápido
+**Início rápido**
 
-### Local — Laragon ou XAMPP
+**Local — Laragon ou XAMPP**
 
 Ative o bloco `LOCAL` no `.env` e execute:
 
@@ -745,7 +741,7 @@ Aplicação:
 
 http://127.0.0.1:8000
 
-### Docker
+**Docker**
 
 Ative o bloco `DOCKER` no `.env` e execute:
 
@@ -760,7 +756,7 @@ http://localhost:8080
 
 ---
 
-## Logins demo
+**Logins demo**
 
 | Perfil | E-mail | Senha |
 | --- | --- | --- |
@@ -770,7 +766,7 @@ http://localhost:8080
 
 ---
 
-## URLs principais
+**URLs principais**
 
 | Área | Local | Docker |
 | --- | --- | --- |
@@ -783,12 +779,11 @@ Liste as principais rotas reais do sistema.
 
 ---
 
-## Outros documentos
+**Outros documentos**
 
 - [PLANO_IMPLEMENTACAO_CHECKLIST.md](PLANO_IMPLEMENTACAO_CHECKLIST.md) — Checklist do projeto
 - [IMPLANTACAO_EMPRESA.md](IMPLANTACAO_EMPRESA.md) — Guia de implantação
 - [ACESSOS_TESTES.md](ACESSOS_TESTES.md) — Credenciais e fluxos de teste
-````
 
 Na seção **Outros documentos**, listar somente arquivos que realmente existirem.
 
@@ -798,8 +793,7 @@ Na seção **Outros documentos**, listar somente arquivos que realmente existire
 
 O arquivo local deve seguir obrigatoriamente esta estrutura:
 
-````markdown
-# Como Executar Localmente — Nome Real do Projeto
+**Como Executar Localmente — Nome Real do Projeto**
 
 Guia para rodar **sem Docker**, no **Laragon**, **XAMPP** ou com `php artisan serve`.
 
@@ -807,7 +801,7 @@ Guia para rodar **sem Docker**, no **Laragon**, **XAMPP** ou com `php artisan se
 
 ---
 
-## Requisitos
+**Requisitos**
 
 Para rodar localmente, você **não precisa** de uma versão específica do Laragon nem instalar o Laravel globalmente.
 
@@ -825,7 +819,7 @@ Laragon, XAMPP ou `php artisan serve` são apenas formas de subir o ambiente.
 
 Extensões PHP necessárias: `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`, `bcmath`.
 
-### Ambiente de referência (máquina de desenvolvimento)
+**Ambiente de referência (máquina de desenvolvimento)**
 
 Stack usada na elaboração deste projeto — **não é requisito fixo**, só referência do que já foi testado:
 
@@ -852,9 +846,9 @@ npm -v
 
 ---
 
-## 1) Preparar ambiente
+**1) Preparar ambiente**
 
-### 1.1 Clonar ou acessar o projeto
+**1.1 Clonar ou acessar o projeto**
 
 ```bash
 cd c:/laragon/www/nome-real-da-pasta
@@ -862,7 +856,7 @@ cd c:/laragon/www/nome-real-da-pasta
 
 Use o nome real da pasta.
 
-### 1.2 Copiar variáveis de ambiente
+**1.2 Copiar variáveis de ambiente**
 
 ```bash
 cp .env.example .env
@@ -874,7 +868,7 @@ No PowerShell:
 Copy-Item .env.example .env
 ```
 
-### 1.3 Ativar o ambiente local
+**1.3 Ativar o ambiente local**
 
 Deixe o bloco `LOCAL` ativo e o bloco `DOCKER` comentado no `.env`.
 
@@ -902,7 +896,7 @@ DB_PASSWORD=
 # DB_PASSWORD=senha_docker
 ```
 
-### 1.4 Criar o banco de dados
+**1.4 Criar o banco de dados**
 
 Crie o banco pelo HeidiSQL, PHPMyAdmin ou execute:
 
@@ -916,7 +910,7 @@ COLLATE utf8mb4_unicode_ci;
 
 ---
 
-## 2) Instalar dependências
+**2) Instalar dependências**
 
 ```bash
 composer install
@@ -927,7 +921,7 @@ Não incluir `npm install` caso o projeto não possua `package.json`.
 
 ---
 
-## 3) Inicialização e migrations
+**3) Inicialização e migrations**
 
 ```bash
 php artisan key:generate
@@ -951,7 +945,7 @@ php artisan migrate:fresh --seed
 
 ---
 
-## 4) Rodar aplicação
+**4) Rodar aplicação**
 
 ```bash
 php artisan serve
@@ -969,7 +963,7 @@ npm run dev
 
 ---
 
-## 5) Filas e workers
+**5) Filas e workers**
 
 Se existirem filas:
 
@@ -981,7 +975,7 @@ Caso não existam, informar apenas que o projeto não exige worker.
 
 ---
 
-## 6) Acessos
+**6) Acessos**
 
 | Recurso | URL |
 | --- | --- |
@@ -990,7 +984,7 @@ Caso não existam, informar apenas que o projeto não exige worker.
 | Login | URL real |
 | Painel administrativo | URL real |
 
-### Credenciais de teste
+**Credenciais de teste**
 
 Criar um bloco para cada perfil real encontrado:
 
@@ -1003,7 +997,7 @@ Senha: senha real
 
 ---
 
-## 7) Comandos úteis
+**7) Comandos úteis**
 
 ```bash
 php artisan optimize:clear
@@ -1015,35 +1009,35 @@ php artisan test
 
 ---
 
-## 8) Problemas comuns
+**8) Problemas comuns**
 
-### Banco não conecta
+**Banco não conecta**
 
 ```env
 DB_HOST=127.0.0.1
 DB_PORT=3307
 ```
 
-### Alterações do `.env` não foram aplicadas
+**Alterações do `.env` não foram aplicadas**
 
 ```bash
 php artisan optimize:clear
 ```
 
-### Chave não configurada
+**Chave não configurada**
 
 ```bash
 php artisan key:generate
 ```
 
-### Assets não encontrados
+**Assets não encontrados**
 
 ```bash
 npm install
 npm run build
 ```
 
-### Tabelas não encontradas
+**Tabelas não encontradas**
 
 ```bash
 php artisan migrate --seed
@@ -1051,10 +1045,9 @@ php artisan migrate --seed
 
 ---
 
-## Próximo passo
+**Próximo passo**
 
 Para ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md).
-````
 
 ---
 
@@ -1062,14 +1055,13 @@ Para ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_D
 
 O arquivo Docker deve seguir obrigatoriamente esta estrutura:
 
-````markdown
-# Como Executar com Docker — Nome Real do Projeto
+**Como Executar com Docker — Nome Real do Projeto**
 
 Guia para executar o sistema utilizando Docker Desktop.
 
 ---
 
-## Stack e containers
+**Stack e containers**
 
 | Container | Função | Porta |
 | --- | --- | --- |
@@ -1082,7 +1074,7 @@ Adicionar Redis, Mailpit, worker ou scheduler somente quando existirem.
 
 ---
 
-## 1) Preparar ambiente
+**1) Preparar ambiente**
 
 ```bash
 cp .env.example .env
@@ -1116,7 +1108,7 @@ DB_PASSWORD=senha_docker
 
 ---
 
-## 2) Subir containers
+**2) Subir containers**
 
 ```bash
 docker compose up -d --build
@@ -1125,7 +1117,7 @@ docker compose ps
 
 ---
 
-## 3) Inicialização e migrations
+**3) Inicialização e migrations**
 
 Caso o Dockerfile ou entrypoint ainda não execute automaticamente:
 
@@ -1147,7 +1139,7 @@ Não duplicar comandos que já sejam executados automaticamente.
 
 ---
 
-## 4) Desenvolvimento e cache
+**4) Desenvolvimento e cache**
 
 ```bash
 docker compose exec app php artisan optimize:clear
@@ -1155,7 +1147,7 @@ docker compose exec app php artisan optimize:clear
 
 ---
 
-## 5) Acessos
+**5) Acessos**
 
 | Recurso | URL |
 | --- | --- |
@@ -1163,7 +1155,7 @@ docker compose exec app php artisan optimize:clear
 | Painel administrativo | URL real |
 | PHPMyAdmin | http://localhost:8085 |
 
-### Credenciais de teste
+**Credenciais de teste**
 
 ```txt
 Nome do painel ou perfil
@@ -1172,7 +1164,7 @@ E-mail: e-mail real
 Senha: senha real
 ```
 
-### PHPMyAdmin
+**PHPMyAdmin**
 
 ```txt
 URL: http://localhost:8085
@@ -1183,7 +1175,7 @@ Senha: senha configurada no Docker
 
 ---
 
-## 6) Logs e diagnóstico
+**6) Logs e diagnóstico**
 
 ```bash
 docker compose logs -f
@@ -1195,7 +1187,7 @@ Adicionar logs de Nginx, worker, scheduler ou Redis somente quando existirem.
 
 ---
 
-## 7) Parar ou reconstruir
+**7) Parar ou reconstruir**
 
 ```bash
 docker compose down
@@ -1209,7 +1201,6 @@ docker compose down -v
 ```
 
 > O comando `docker compose down -v` pode apagar os dados do banco.
-````
 
 ---
 
@@ -1570,7 +1561,6 @@ Analise o projeto fornecido e gere o README completo seguindo TODAS as regras ac
 **Análise de Commits e Push para o GitHub**
 
 faca a anlise e commits ai 
-
 
 faca o githpush e ajuste ai por favor o repo e tudo mais e suba 
 
