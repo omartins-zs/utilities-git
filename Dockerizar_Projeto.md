@@ -38,24 +38,26 @@ Por favor, forneça o código completo dos arquivos e instruções claras.
 **Performance e Otimização de Ambiente Docker**
 
 ````
- Performance_Otimizacao_Docker
+# Performance_Otimizacao_Docker
 
-Objetivo
+## Objetivo
 Criar uma auditoria e otimização completa de performance para aplicações web em Docker, com foco especial em Laravel/PHP-FPM/Nginx, ambiente local no Windows com Docker Desktop, volumes montados, cache de framework, PHP opcaches, bootstrap de containers e estabilidade do upstream.
 
 Este prompt deve ser usado para pedir que uma IA analise o projeto atual, identifique gargalos reais e aplique otimizações seguras, práticas e reutilizáveis, sem fazer mudanças cosméticas desnecessárias.
 
 ---
 
+## Prompt
+
 ```text
 Analise profundamente a infraestrutura Docker e a performance local desta aplicação web e aplique otimizações reais e seguras.
 
 Quero que você trate isso como uma revisão de performance de ambiente + runtime, não como simples ajuste superficial.
 
-Objetivo principal
+## Objetivo principal
 Melhorar tempo de resposta entre telas, reduzir lentidão local, diminuir gargalos de bootstrap do container e tornar a navegação mais estável e rápida, principalmente em ambiente Docker Desktop no Windows.
 
-O que analisar primeiro
+## O que analisar primeiro
 Antes de alterar qualquer coisa, faça um diagnóstico do ambiente atual e identifique:
 
 - APP_ENV
@@ -77,7 +79,7 @@ Antes de alterar qualquer coisa, faça um diagnóstico do ambiente atual e ident
 - se o nginx está prendendo IP antigo do container PHP
 - se o container está bloqueando startup por aquecimento excessivo de cache
 
- Requisitos do trabalho
+## Requisitos do trabalho
 Você deve:
 
 1. analisar a estrutura Docker atual
@@ -92,7 +94,7 @@ Você deve:
    - docker/scripts/start-app.sh
 7. documentar claramente o que foi mudado e por quê
 
- Diretrizes obrigatórias
+## Diretrizes obrigatórias
 
 - não apenas diga o que fazer; aplique as mudanças
 - não destrua o ambiente existente sem necessidade
@@ -101,9 +103,9 @@ Você deve:
 - se houver Docker Desktop no Windows com bind mount, considere isso explicitamente
 - priorize estabilidade final do ambiente, não só benchmark artificial
 
- Pontos que você deve revisar e otimizar
+## Pontos que você deve revisar e otimizar
 
-1. Laravel / App runtime
+### 1. Laravel / App runtime
 Verifique e ajuste quando fizer sentido:
 - APP_DEBUG=false para navegação local mais estável
 - config cache
@@ -113,7 +115,7 @@ Verifique e ajuste quando fizer sentido:
 - locale e timezone corretos
 - evitar que config de ambiente local contamine ambiente de teste
 
-2. Sessão e cache
+### 2. Sessão e cache
 Analise se o driver atual de sessão está gerando I/O excessivo.
 Considere:
 - file
@@ -124,7 +126,7 @@ Considere:
 Escolha a alternativa mais adequada para performance local e explique a decisão.
 Se a extensão Redis não estiver instalada, não force solução quebrada.
 
-3. PHP-FPM
+### 3. PHP-FPM
 Revise e otimize:
 - pm
 - pm.max_children
@@ -137,7 +139,7 @@ Revise e otimize:
 
 Se houver logs como “server reached pm.max_children”, trate isso como gargalo real.
 
-4. PHP ini / runtime
+### 4. PHP ini / runtime
 Revise e ajuste:
 - memory_limit
 - max_execution_time
@@ -158,7 +160,7 @@ Revise e ajuste:
 
 Se o ambiente for local com Docker no Windows, considere desligar validate_timestamps se isso fizer sentido para performance, deixando claro que reinício do container pode ser necessário após mudanças em PHP/backend.
 
-5. Nginx
+### 5. Nginx
 Revise e ajuste:
 - upstream fastcgi para app:9000
 - fastcgi_param SCRIPT_FILENAME
@@ -172,7 +174,7 @@ Revise e ajuste:
 Não volte para uma config simplista se ela piorar estabilidade.
 Se o resolver dinâmico for necessário para evitar nginx preso em IP antigo do container, mantenha isso.
 
-6. Bootstrap do container app
+### 6. Bootstrap do container app
 Revise o comando/CMD/entrypoint do container app.
 Se houver script de startup, melhore para:
 - esperar banco ficar pronto
@@ -181,7 +183,7 @@ Se houver script de startup, melhore para:
 - evitar bloquear o php-fpm a cada restart com rebuild completo de cache
 - subir rápido e aquecer de forma inteligente
 
-7. Docker Compose
+### 7. Docker Compose
 Revise:
 - volumes
 - env_file
@@ -190,7 +192,7 @@ Revise:
 - organização entre app, queue, scheduler, nginx, postgres, redis, vite
 - se há melhoria simples e segura para ambiente local
 
-8. Performance prática
+### 8. Performance prática
 Depois das alterações, valide de forma objetiva:
 - tempo do /login
 - tempo do /
@@ -212,7 +214,7 @@ Se necessário, crie ou ajuste arquivos como:
 - docker-compose.yml
 - .env.example
 
-Resultado esperado
+## Resultado esperado
 No final eu quero:
 - ambiente Docker mais rápido
 - menos lentidão entre telas
@@ -223,7 +225,7 @@ No final eu quero:
 - configs organizadas em pastas reutilizáveis
 - explicação clara do que foi mudado
 
-Entrega final
+## Entrega final
 Quero que você entregue:
 1. resumo objetivo dos gargalos encontrados
 2. lista das alterações aplicadas
@@ -234,7 +236,7 @@ Quero que você entregue:
 
 ---
 
-Observacoes praticas para reaproveitar
+## Observacoes praticas para reaproveitar
 
 Este prompt funciona especialmente bem para projetos com:
 - Laravel + PHP-FPM + Nginx
@@ -244,7 +246,7 @@ Este prompt funciona especialmente bem para projetos com:
 - ambiente Windows com bind mount
 - apps que ficam lentos ao navegar entre telas mesmo sem problema grave no frontend
 
-Sinais reais de gargalo que esse prompt ajuda a atacar
+### Sinais reais de gargalo que esse prompt ajuda a atacar
 - navegacao entre telas levando varios segundos
 - `APP_DEBUG=true` em ambiente local pesado
 - `config` e `routes` sem cache
@@ -254,7 +256,7 @@ Sinais reais de gargalo que esse prompt ajuda a atacar
 - startup do container lento porque reconstrói cache toda vez
 - primeira requisicao muito lenta apos subir containers
 
-Adaptacao rapida para outros stacks
+### Adaptacao rapida para outros stacks
 Se o projeto nao for Laravel, voce pode trocar no prompt:
 - `php artisan about` por comandos equivalentes do framework
 - `config:cache/route:cache/view:cache` por mecanismos equivalentes
@@ -262,13 +264,14 @@ Se o projeto nao for Laravel, voce pode trocar no prompt:
 
 ---
 
-Dica de uso
+## Dica de uso
 Use esse prompt em projetos novos ou legados e peça sempre:
 - diagnostico primeiro
 - alteracoes depois
 - validacao objetiva no final
 
 Assim voce evita respostas genericas e força a IA a tratar performance como engenharia real de ambiente.
+
 ````
 
 [⬆ Voltar ao índice](./README.md)
@@ -280,7 +283,7 @@ Assim voce evita respostas genericas e força a IA a tratar performance como eng
 **Documentação de Acessos e Testes**
 
 ````
-📄 DOCUMENTAÇÃO (ACESSOS E TESTES)
+# 📄 DOCUMENTAÇÃO (ACESSOS E TESTES)
 
 🚀 PROMPT — GERAR ACESSOS DE TESTE
 
@@ -297,16 +300,16 @@ Você deve criar UM arquivo de documentação registrando os acessos e dados de 
 
 ---
 
-🔑 ACESSOS_TESTES.md
+# 🔑 ACESSOS_TESTES.md
 
 O arquivo gerado deve seguir estritamente o template abaixo, mesclando todas as informações importantes (substitua o texto entre chaves/colchetes pelos dados reais da aplicação):
 
 ```markdown
-🔐 Acessos e Dados de Teste
+# 🔐 Acessos e Dados de Teste
 
 Utilize as credenciais abaixo para testar as diferentes visões e permissões do sistema. Todos os usuários e registros foram gerados automaticamente via *Seeders*.
 
-1. Acesso ao Sistema (Usuários de Teste)
+## 1. Acesso ao Sistema (Usuários de Teste)
 
 *(ATENÇÃO IA: Analise os seeders e crie a tabela abaixo com todos os usuários de teste encontrados no código)*
 
@@ -315,14 +318,14 @@ Utilize as credenciais abaixo para testar as diferentes visões e permissões do
 | [Nome do Perfil 1] | `[email_1]` | `[senha_1]` | [Explicação do que esse usuário pode fazer] |
 | [Nome do Perfil 2] | `[email_2]` | `[senha_2]` | [Explicação do que esse usuário pode fazer] |
 
-2. URLs Principais
+## 2. URLs Principais
 
 | Ambiente | Aplicação (Home) | Login / Painel |
 | --- | --- | --- |
 | **Docker** | `http://localhost:8080` | `http://localhost:8080/login` |
 | **Local** (`php artisan serve`) | `http://127.0.0.1:8000` | `http://127.0.0.1:8000/login` |
 
-3. Vitrine Pública / Páginas para Clientes
+## 3. Vitrine Pública / Páginas para Clientes
 
 *(ATENÇÃO IA: Adapte, adicione as rotas públicas reais do sistema ou remova caso o sistema seja apenas um painel interno fechado)*
 
@@ -331,7 +334,7 @@ Utilize as credenciais abaixo para testar as diferentes visões e permissões do
 | [Ex: Landing page / Tela inicial] | `http://localhost:8080/` |
 | [Ex: Sitemap para SEO] | `http://localhost:8080/sitemap.xml` |
 
-4. Validação do Acesso
+## 4. Validação do Acesso
 
 Validação da saúde da aplicação no ambiente de desenvolvimento:
 
@@ -341,7 +344,7 @@ Validação da saúde da aplicação no ambiente de desenvolvimento:
 | Tela de login principal | HTTP `200` |
 | Login com usuário de teste gerado pelo seeder | Redirecionamento para Dashboard/Painel |
 
-5. Carregar Dados de Teste
+## 5. Carregar Dados de Teste
 
 Caso o banco de dados seja apagado ou precise ser resetado, basta rodar os comandos abaixo para recriar todas essas credenciais e os registros iniciais da plataforma.
 
@@ -357,14 +360,14 @@ php artisan migrate:fresh --seed
 
 ---
 
-📝 Observações:
+### 📝 Observações:
 - O banco de dados geralmente é alimentado com registros retroativos e informações simuladas vinculadas a esses usuários para facilitar a visualização, filtragem na tela de relatórios e validação dos fluxos.
 - Use estas credenciais **apenas** em ambiente local ou Docker de desenvolvimento.
 ```
 
 ---
 
-⚡ REGRAS FINAIS
+# ⚡ REGRAS FINAIS
 
 - Mantenha a formatação exata das tabelas.
 - Puxe os dados reais (senhas, e-mails, rotas) lendo ativamente o código-fonte Laravel atual.
@@ -380,10 +383,14 @@ php artisan migrate:fresh --seed
 **Tema Claro/Escuro e Refatoração de UI/UX**
 
 ````
+
+
 Quero adicionar tema escuro e tema claro 
 
 
 Quero fazer uma refatoracao de UI e UX 
+
+
 ````
 
 [⬆ Voltar ao índice](./README.md)
@@ -395,9 +402,9 @@ Quero fazer uma refatoracao de UI e UX
 **Padronizar .env, Docker e Documentação de Execução**
 
 ````
-📄 DOCUMENTAÇÃO E AMBIENTE — LARAVEL LOCAL + DOCKER
+# 📄 DOCUMENTAÇÃO E AMBIENTE — LARAVEL LOCAL + DOCKER
 
-🚀 PROMPT — PADRONIZAR `.ENV`, DOCKER E DOCUMENTAÇÃO DE EXECUÇÃO
+## 🚀 PROMPT — PADRONIZAR `.ENV`, DOCKER E DOCUMENTAÇÃO DE EXECUÇÃO
 
 Você é um arquiteto de software sênior especialista em **Laravel, Docker, DevOps e ambientes híbridos**.
 
@@ -412,9 +419,9 @@ Não criar verificações manuais dentro do código PHP para descobrir o ambient
 
 ---
 
-📦 ARQUIVOS QUE DEVEM SER CRIADOS OU AJUSTADOS
+# 📦 ARQUIVOS QUE DEVEM SER CRIADOS OU AJUSTADOS
 
-Documentação
+## Documentação
 
 Criar obrigatoriamente:
 
@@ -424,7 +431,7 @@ Criar obrigatoriamente:
 
 Se a pasta `docs/` não existir, crie-a.
 
-Ambiente
+## Ambiente
 
 Criar ou ajustar, conforme necessário:
 
@@ -441,7 +448,7 @@ O projeto deve utilizar o mesmo `.env` nos dois modos, alternando apenas os bloc
 
 ---
 
-⚠️ REGRAS GERAIS
+# ⚠️ REGRAS GERAIS
 
 - O projeto é **estritamente Laravel**.
 - Trabalhe somente com o ecossistema utilizado pelo projeto:
@@ -492,7 +499,7 @@ O projeto deve utilizar o mesmo `.env` nos dois modos, alternando apenas os bloc
 
 ---
 
-🔄 PADRÃO OBRIGATÓRIO DO `.ENV`
+# 🔄 PADRÃO OBRIGATÓRIO DO `.ENV`
 
 O `.env.example` e o `.env` devem ser organizados com dois blocos:
 
@@ -505,7 +512,7 @@ Por padrão, deixe o bloco **LOCAL ativo** e o bloco **DOCKER comentado**, pois 
 
 Não colocar muitos comentários no `.env`. Utilize somente divisões curtas e claras.
 
-Exemplo obrigatório — LOCAL ativo
+## Exemplo obrigatório — LOCAL ativo
 
 Adapte os nomes do banco, usuários e serviços conforme o projeto real:
 
@@ -531,7 +538,7 @@ DB_PASSWORD=
 # DB_PASSWORD=senha_docker
 ```
 
-**Exemplo obrigatório — DOCKER ativo**
+## Exemplo obrigatório — DOCKER ativo
 
 A documentação Docker deve mostrar o bloco invertido:
 
@@ -557,7 +564,7 @@ DB_USERNAME=usuario_docker
 DB_PASSWORD=senha_docker
 ```
 
-**Regras das portas**
+## Regras das portas
 
 | Ambiente | Host do banco | Porta do Laravel |
 | --- | --- | --- |
@@ -577,7 +584,7 @@ Isso significa:
 - Laravel dentro do Docker acessa o serviço `mysql` pela porta interna `3306`;
 - o computador host acessa o MySQL do Docker pela porta `3308`.
 
-**Outros serviços**
+## Outros serviços
 
 Caso existam Redis, Mailpit, filas ou outros serviços, aplique o mesmo padrão.
 
@@ -621,13 +628,13 @@ Somente inclua variáveis de Redis, Mailpit, filas, cache ou outros serviços qu
 
 Depois de alterar o bloco ativo, limpar as configurações:
 
-**Local**
+### Local
 
 ```bash
 php artisan optimize:clear
 ```
 
-**Docker**
+### Docker
 
 ```bash
 docker compose exec app php artisan optimize:clear
@@ -635,11 +642,11 @@ docker compose exec app php artisan optimize:clear
 
 ---
 
-**🐳 CONFIGURAÇÃO OBRIGATÓRIA DO DOCKER**
+# 🐳 CONFIGURAÇÃO OBRIGATÓRIA DO DOCKER
 
 Além da documentação, configure o projeto para realmente funcionar via Docker.
 
-**Serviços obrigatórios**
+## Serviços obrigatórios
 
 | Serviço | Função | Porta no computador |
 | --- | --- | --- |
@@ -671,7 +678,7 @@ PMA_HOST=mysql
 PMA_PORT=3306
 ```
 
-**Serviços opcionais**
+## Serviços opcionais
 
 Criar somente quando o projeto utilizar:
 
@@ -682,7 +689,7 @@ Criar somente quando o projeto utilizar:
 
 O worker e o scheduler devem reutilizar a mesma imagem do container `app`.
 
-**Docker Compose**
+## Docker Compose
 
 O Compose deve:
 
@@ -697,7 +704,7 @@ O Compose deve:
 - manter a aplicação acessível em `http://localhost:8080`;
 - manter o PHPMyAdmin em `http://localhost:8085`.
 
-**Dockerfile**
+## Dockerfile
 
 O Dockerfile deve ser criado para Laravel e conter apenas o necessário:
 
@@ -713,7 +720,7 @@ Não usar imagens ou ferramentas de outras stacks.
 
 ---
 
-**📙 1. `docs/COMO_EXECUTAR.md`**
+# 📙 1. `docs/COMO_EXECUTAR.md`
 
 Este será o guia principal e deve possuir a seguinte estrutura:
 
@@ -805,7 +812,7 @@ Na seção **Outros documentos**, listar somente arquivos que realmente existire
 
 ---
 
-**📗 2. `docs/COMO_EXECUTAR_LOCAL.md`**
+# 📗 2. `docs/COMO_EXECUTAR_LOCAL.md`
 
 O arquivo local deve seguir obrigatoriamente esta estrutura:
 
@@ -1069,7 +1076,7 @@ Para ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_D
 
 ---
 
-**📘 3. `docs/COMO_EXECUTAR_DOCKER.md`**
+# 📘 3. `docs/COMO_EXECUTAR_DOCKER.md`
 
 O arquivo Docker deve seguir obrigatoriamente esta estrutura:
 
@@ -1224,7 +1231,7 @@ docker compose down -v
 
 ---
 
-**🧪 VALIDAÇÃO OBRIGATÓRIA**
+# 🧪 VALIDAÇÃO OBRIGATÓRIA
 
 Antes de finalizar, valide:
 
@@ -1261,7 +1268,7 @@ Caso alguma validação não possa ser executada, informe isso claramente no res
 
 ---
 
-**🎯 RESULTADO ESPERADO**
+# 🎯 RESULTADO ESPERADO
 
 Ao terminar:
 
@@ -1289,7 +1296,7 @@ Ao terminar:
 **Gerador de README Profissional (Padrão Gabriel Martins)**
 
 ````
-🚀 GERADOR DE README PROFISSIONAL (PADRÃO GABRIEL MARTINS)
+# 🚀 GERADOR DE README PROFISSIONAL (PADRÃO GABRIEL MARTINS)
 
 Você é um especialista em documentação técnica e GitHub README.
 
@@ -1297,7 +1304,7 @@ Sua missão é analisar COMPLETAMENTE o projeto fornecido e gerar um README.md e
 
 ---
 
-**🔎 ANÁLISE OBRIGATÓRIA DO PROJETO**
+# 🔎 ANÁLISE OBRIGATÓRIA DO PROJETO
 
 ANTES de gerar o README, você DEVE:
 
@@ -1319,7 +1326,7 @@ ANTES de gerar o README, você DEVE:
 
 ---
 
-**🧠 IDENTIFICAÇÃO DE ARQUITETURA (OBRIGATÓRIO)**
+# 🧠 IDENTIFICAÇÃO DE ARQUITETURA (OBRIGATÓRIO)
 
 Você DEVE classificar o projeto como:
 
@@ -1331,7 +1338,7 @@ E exibir isso no README.
 
 ---
 
-**⚠️ REGRA CRÍTICA**
+# ⚠️ REGRA CRÍTICA
 
 - ❌ NÃO inventar tecnologia
 - ❌ NÃO criar seção vazia
@@ -1340,7 +1347,7 @@ E exibir isso no README.
 
 ---
 
-**🎨 PADRÃO VISUAL OBRIGATÓRIO**
+# 🎨 PADRÃO VISUAL OBRIGATÓRIO
 
 - Usar emojis em todas as seções
 - Usar `<div align="center">`
@@ -1351,9 +1358,9 @@ E exibir isso no README.
 
 ---
 
-**🧱 ESTRUTURA DO README**
+# 🧱 ESTRUTURA DO README
 
-**🧠 HEADER COM ÍCONES**
+## 🧠 HEADER COM ÍCONES
 
 Criar um `<h1 align="center">` com:
 
@@ -1362,7 +1369,7 @@ Criar um `<h1 align="center">` com:
 
 ---
 
-**📝 DESCRIÇÃO**
+## 📝 DESCRIÇÃO
 
 Texto curto explicando o projeto
 
@@ -1372,13 +1379,13 @@ Depois:
 
 ---
 
-**🚦 STATUS DO PROJETO**
+## 🚦 STATUS DO PROJETO
 
 <h4 align="center"> ✅ Nome do Projeto 🚀 Concluído / Em desenvolvimento ⚙️ </h4>
 
 ---
 
-**🏗️ ARQUITETURA DO PROJETO**
+## 🏗️ ARQUITETURA DO PROJETO
 
 Exibir:
 
@@ -1387,7 +1394,7 @@ Exibir:
 
 ---
 
-**🔥 PRÉ-REQUISITOS**
+## 🔥 PRÉ-REQUISITOS
 
 ⚠️ REGRA IMPORTANTE:
 
@@ -1402,7 +1409,7 @@ Exemplo:
 
 ---
 
-**🚀 TECNOLOGIAS UTILIZADAS**
+## 🚀 TECNOLOGIAS UTILIZADAS
 
 Lista clara com:
 
@@ -1414,21 +1421,21 @@ Lista clara com:
 
 ---
 
-**🔨 FUNCIONALIDADES**
+## 🔨 FUNCIONALIDADES
 
 Listar funcionalidades REAIS do projeto
 
 ---
 
-**🎯 SOBRE O PROJETO (SEMPRE INCLUIR)**
+## 🎯 SOBRE O PROJETO (SEMPRE INCLUIR)
 
-**🎯 Sobre o Projeto**
+## 🎯 Sobre o Projeto
 
 Sistema desenvolvido demonstrando boas práticas de desenvolvimento, arquitetura limpa e organização de código, com foco em escalabilidade e manutenção.
 
 ---
 
-**📸 PREVIEW DO PROJETO (SEMPRE INCLUIR)**
+## 📸 PREVIEW DO PROJETO (SEMPRE INCLUIR)
 
 Se existir imagem ou gif no projeto → usar:
 
@@ -1440,7 +1447,7 @@ Caso NÃO exista:
 
 ---
 
-**📊 DOCUMENTAÇÃO DA API (SE FOR API)**
+## 📊 DOCUMENTAÇÃO DA API (SE FOR API)
 
 Antes de gerar esta seção, você DEVE:
 
@@ -1451,23 +1458,23 @@ Antes de gerar esta seção, você DEVE:
 
 Se existir, documentar:
 
-**📁 Documentação do Projeto**
+### 📁 Documentação do Projeto
 
 - Se existir pasta `docs/`, mencionar:
   - Estrutura da pasta
   - Arquivos relevantes (ex: API.md, arquitetura.md, etc)
 
-**📬 Postman / Collections**
+### 📬 Postman / Collections
 
 - Se existir pasta `postman/` ou arquivos `.json`:
   - Listar os arquivos encontrados
   - Explicar como importar no Postman
 
-**🌐 Swagger (se existir)**
+### 🌐 Swagger (se existir)
 
 - Informar URL (ex: `/api/docs`, `/swagger`, etc)
 
-**🖼️ Prints / Imagens (se existir)**
+### 🖼️ Prints / Imagens (se existir)
 
 - Exibir imagens do projeto (ex: documentação, telas, etc)
 
@@ -1479,11 +1486,11 @@ Se NÃO existir nenhuma dessas opções:
 
 ---
 
-**💻 COMANDOS (SEMPRE OBRIGATÓRIO)**
+## 💻 COMANDOS (SEMPRE OBRIGATÓRIO)
 
 Gerar comandos baseado na stack:
 
-**Laravel:**
+### Laravel:
 
     composer install
     cp .env.example .env
@@ -1493,12 +1500,12 @@ Gerar comandos baseado na stack:
     npm install
     npm run dev
 
-**Node:**
+### Node:
 
     npm install
     npm run dev
 
-**.NET:**
+### .NET:
 
     dotnet restore
     dotnet build
@@ -1508,7 +1515,7 @@ Gerar comandos baseado na stack:
 
 ---
 
-**⚠️ IMPORTANTE**
+## ⚠️ IMPORTANTE
 
 Sempre adicionar:
 
@@ -1517,13 +1524,13 @@ Sempre adicionar:
 
 ---
 
-**🧱 ESTRUTURA DO PROJETO (SE RELEVANTE)**
+## 🧱 ESTRUTURA DO PROJETO (SE RELEVANTE)
 
 Mostrar estrutura de pastas principais
 
 ---
 
-**📝 MELHORIAS FUTURAS (SE EXISTIR OU GERAR)**
+## 📝 MELHORIAS FUTURAS (SE EXISTIR OU GERAR)
 
 Checklist:
 
@@ -1532,13 +1539,13 @@ Checklist:
 
 ---
 
-**🖋️ DICAS (OPCIONAL)**
+## 🖋️ DICAS (OPCIONAL)
 
 Atalhos, boas práticas, etc
 
 ---
 
-**📄 FINALIZAÇÃO (SEMPRE OBRIGATÓRIO)**
+## 📄 FINALIZAÇÃO (SEMPRE OBRIGATÓRIO)
 
 <div align="center">
 
@@ -1579,21 +1586,25 @@ Analise o projeto fornecido e gere o README completo seguindo TODAS as regras ac
 
 ---
 
-# --- PROMPT #10 ---
+# --- PROMPT #8 ---
 
 **Análise de Commits e Push para o GitHub**
 
 ````
-faca a anlise e commits ai 
 
+Realize a análise do projeto e o envio para o GitHub executando os passos:
 
-faca o githpush e ajuste ai por favor o repo e tudo mais e suba 
+Análise e Commits: Identifique os arquivos modificados e crie os commits organizados seguindo o padrão do projeto.
 
-**Padrão de Análise de Commits**
+Ajustes: Verifique se o repositório remoto precisa de alguma configuração ou ajuste.
+
+Push: Envie todas as alterações pendentes (git push) para o GitHub.
+
+# Padrão de Análise de Commits
 
 ---
 
-**🔹 ANÁLISE 1 — Análise Simples de Commits**
+# 🔹 ANÁLISE 1 — Análise Simples de Commits
 
 Este documento define o **padrão oficial para análise simples de commits** do projeto.
 
@@ -1606,7 +1617,7 @@ O objetivo é:
 
 ---
 
-**⚠️ Regra Importante — Uso de Emoji**
+## ⚠️ Regra Importante — Uso de Emoji
 
 Cada commit deve usar **APENAS 1 emoji** no início da mensagem.
 
@@ -1618,7 +1629,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-**✅ Formato obrigatório (recomendado)**
+### ✅ Formato obrigatório (recomendado)
 
 ```text
 :bug: fix: corrigindo validação de login
@@ -1628,7 +1639,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-**⚠️ Formato alternativo (evitar se possível)**
+### ⚠️ Formato alternativo (evitar se possível)
 
 ```text
 🐛 fix: corrigindo validação de login
@@ -1636,7 +1647,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-**❌ Errado (nunca usar)**
+### ❌ Errado (nunca usar)
 
 ```text
 🐛 :bug: fix: corrigindo erro
@@ -1644,7 +1655,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-**Fluxo de Trabalho**
+## Fluxo de Trabalho
 
 1. Analisar todos os arquivos alterados  
 2. Descrever claramente o que mudou em cada arquivo  
@@ -1656,7 +1667,7 @@ Alguns editores, terminais ou ambientes podem apresentar erro ao usar emoji visu
 
 ---
 
-**Padrão de Commits (iuricode)**
+## Padrão de Commits (iuricode)
 
 Referência oficial:
 
@@ -1664,7 +1675,7 @@ https://github.com/iuricode/padroes-de-commits
 
 ---
 
-**Tipos de Commit e Emojis**
+## Tipos de Commit e Emojis
 
 | Tipo | Emoji (usar este) | Keyword |
 |-----|------------------|--------|
@@ -1687,7 +1698,7 @@ https://github.com/iuricode/padroes-de-commits
 
 ---
 
-**Regras para Mensagens de Commit**
+## Regras para Mensagens de Commit
 
 - Máximo de **50 caracteres** na mensagem principal  
 - Usar verbo no infinitivo  
@@ -1713,28 +1724,28 @@ Exemplo:
 
 ---
 
-**Estrutura Padrão da Análise**
+## Estrutura Padrão da Análise
 
 Cada item analisado deve seguir este formato:
 
-**Arquivo**
+### Arquivo
 caminho/do/arquivo.ext
 
-**Análise**
+### Análise
 Descrição objetiva do que foi alterado no arquivo.
 
-**Classificação**
+### Classificação
 - Simples  
 - Complexa  
 
-**Commit sugerido**
+### Commit sugerido
 :emoji: tipo: descrição
 
 ---
 
-**Exemplos Práticos**
+## Exemplos Práticos
 
-**Arquivo**
+### Arquivo
 database/seeders/PartidaSeeder.php
 
 **Análise:**  
@@ -1748,7 +1759,7 @@ Simples
 
 ---
 
-**Arquivo**
+### Arquivo
 database/migrations/add_quadro_numero_partidas.php
 
 **Análise:**  
@@ -1762,7 +1773,7 @@ Simples
 
 ---
 
-**Arquivo**
+### Arquivo
 app/Models/Atleta.php
 
 **Análise:**  
@@ -1776,9 +1787,9 @@ Simples
 
 ---
 
-**Consolidação Final**
+## Consolidação Final
 
-**Lista final de commits sugeridos**
+### Lista final de commits sugeridos
 
 ```text
 1. :sparkles: feat: criando seeder de partidas
@@ -1786,7 +1797,7 @@ Simples
 3. :sparkles: feat: criando model Atleta
 ```
 
-**Quantidade total de commits**
+### Quantidade total de commits
 
 ```text
 Total de commits sugeridos: 3
@@ -1794,7 +1805,7 @@ Total de commits sugeridos: 3
 
 ---
 
-**🔹 ANÁLISE 2 — Análise Profunda de Commits**
+# 🔹 ANÁLISE 2 — Análise Profunda de Commits
 
 Esta análise é utilizada quando se deseja um nível mais avançado de entendimento do código, geralmente ao trabalhar com IA ou refatorações maiores.
 
@@ -1802,7 +1813,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-**Quando usar**
+## Quando usar
 
 - Quando estiver usando IA para gerar código  
 - Quando houver muitas alterações complexas  
@@ -1812,7 +1823,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-**Fluxo da Análise Profunda**
+## Fluxo da Análise Profunda
 
 1. Ler completamente o conteúdo de cada arquivo alterado  
 2. Entender o propósito do código (não apenas a mudança)  
@@ -1825,7 +1836,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-**Regras da Análise Profunda**
+## Regras da Análise Profunda
 
 - Os commits serão **executados manualmente**  
 - Ajustes finos poderão ser feitos nas mensagens  
@@ -1836,7 +1847,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-**Boas práticas**
+## Boas práticas
 
 - Alterações pequenas devem gerar commits pequenos  
 - Evitar misturar migration, model e regra de negócio no mesmo commit  
@@ -1846,7 +1857,7 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-**Diferença entre Análise 1 e Análise 2**
+## Diferença entre Análise 1 e Análise 2
 
 | Tipo | Foco |
 |-----|------|
@@ -1866,12 +1877,16 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-# --- PROMPT #11 ---
+# --- PROMPT #9 ---
 
 **Ajustar Tema Dark/Light e Revisão Geral de UI/UX**
 
 ````
+
+
 Revise e ajuste a estilização dos temas Light e Dark da interface. Corrija os problemas de visibilidade e contraste de todos os elementos (textos, botões, bordas e fundos) para garantir total legibilidade em ambos os modos. Substitua os ícones atuais por um conjunto moderno, vetorial e minimalista (como Lucide Icons ou Feather Icons ou o icone utilizado no sistema), mantendo um design limpo e consistente.
+
+
 ````
 
 [⬆ Voltar ao índice](./README.md)
@@ -1883,6 +1898,8 @@ Revise e ajuste a estilização dos temas Light e Dark da interface. Corrija os 
 **Pedido de Análise Minuciosa — Sistema Ainda Não Usável**
 
 ````
+
+
 O sistema continua sem funcionar adequadamente e os últimos ajustes não resolveram o problema. Realize um diagnóstico minucioso no código seguindo os passos abaixo:
 
 Investigação de Causa Raiz: Inspecione o fluxo completo da aplicação (front-end, rotas de back-end, banco de dados e logs) para entender exatamente onde e por que a lógica está falhando.
@@ -1890,6 +1907,8 @@ Investigação de Causa Raiz: Inspecione o fluxo completo da aplicação (front-
 Mapeamento de Erros: Identifique exceções ocultas, respostas incorretas de rede ou incompatibilidades que estejam mantendo a interface ou as funcionalidades quebradas.
 
 Refatoração e Estabilidade: Reescreva os componentes ou scripts necessários com foco em usabilidade e estabilidade, garantindo que o sistema volte a ser totalmente funcional.
+
+
 ````
 
 [⬆ Voltar ao índice](./README.md)
@@ -1901,7 +1920,11 @@ Refatoração e Estabilidade: Reescreva os componentes ou scripts necessários c
 **Ajustar Todo o Login**
 
 ````
+
+
 O fluxo de login continua falhando. Analise o código do front-end e do back-end, identifique em qual etapa a requisição está quebrando e aplique a correção necessária no tratamento de credenciais e sessão.
+
+
 ````
 
 [⬆ Voltar ao índice](./README.md)
