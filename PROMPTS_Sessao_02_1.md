@@ -1,4 +1,6 @@
-# Prompts 
+# Prompts
+
+Índice navegável em [`README.md`](./README.md).
 
 ---
 
@@ -292,7 +294,7 @@ Você deve criar UM arquivo de documentação registrando os acessos e dados de 
 
 O arquivo gerado deve seguir estritamente o template abaixo, mesclando todas as informações importantes (substitua o texto entre chaves/colchetes pelos dados reais da aplicação):
 
-```markdown
+````markdown
 🔐 Acessos e Dados de Teste
 
 Utilize as credenciais abaixo para testar as diferentes visões e permissões do sistema. Todos os usuários e registros foram gerados automaticamente via *Seeders*.
@@ -351,7 +353,7 @@ php artisan migrate:fresh --seed
 📝 Observações:
 - O banco de dados geralmente é alimentado com registros retroativos e informações simuladas vinculadas a esses usuários para facilitar a visualização, filtragem na tela de relatórios e validação dos fluxos.
 - Use estas credenciais **apenas** em ambiente local ou Docker de desenvolvimento.
-```
+````
 
 ---
 
@@ -384,7 +386,7 @@ Quero fazer uma refatoracao de UI e UX
 
 📄 DOCUMENTAÇÃO E AMBIENTE — LARAVEL LOCAL + DOCKER
 
-#🚀 PROMPT — PADRONIZAR `.ENV`, DOCKER E DOCUMENTAÇÃO DE EXECUÇÃO
+🚀 PROMPT — PADRONIZAR `.ENV`, DOCKER E DOCUMENTAÇÃO DE EXECUÇÃO
 
 Você é um arquiteto de software sênior especialista em **Laravel, Docker, DevOps e ambientes híbridos**.
 
@@ -704,7 +706,7 @@ Não usar imagens ou ferramentas de outras stacks.
 
 Este será o guia principal e deve possuir a seguinte estrutura:
 
-```markdown
+````markdown
 # Como Executar — Nome Real do Projeto
 
 Escolha **um** guia conforme seu ambiente:
@@ -786,7 +788,7 @@ Liste as principais rotas reais do sistema.
 - [PLANO_IMPLEMENTACAO_CHECKLIST.md](PLANO_IMPLEMENTACAO_CHECKLIST.md) — Checklist do projeto
 - [IMPLANTACAO_EMPRESA.md](IMPLANTACAO_EMPRESA.md) — Guia de implantação
 - [ACESSOS_TESTES.md](ACESSOS_TESTES.md) — Credenciais e fluxos de teste
-```
+````
 
 Na seção **Outros documentos**, listar somente arquivos que realmente existirem.
 
@@ -796,7 +798,7 @@ Na seção **Outros documentos**, listar somente arquivos que realmente existire
 
 O arquivo local deve seguir obrigatoriamente esta estrutura:
 
-```markdown
+````markdown
 # Como Executar Localmente — Nome Real do Projeto
 
 Guia para rodar **sem Docker**, no **Laragon**, **XAMPP** ou com `php artisan serve`.
@@ -879,7 +881,7 @@ Deixe o bloco `LOCAL` ativo e o bloco `DOCKER` comentado no `.env`.
 Mostrar o bloco real do projeto seguindo este formato:
 
 ```env
-**LOCAL**
+# LOCAL
 APP_URL=http://127.0.0.1:8000
 
 DB_CONNECTION=mysql
@@ -889,15 +891,15 @@ DB_DATABASE=nome_real_do_banco
 DB_USERNAME=root
 DB_PASSWORD=
 
-**DOCKER**
-**APP_URL=http://localhost:8080**
+# DOCKER
+# APP_URL=http://localhost:8080
 #
-**DB_CONNECTION=mysql**
-**DB_HOST=mysql**
-**DB_PORT=3306**
-**DB_DATABASE=nome_real_do_banco**
-**DB_USERNAME=usuario_docker**
-**DB_PASSWORD=senha_docker**
+# DB_CONNECTION=mysql
+# DB_HOST=mysql
+# DB_PORT=3306
+# DB_DATABASE=nome_real_do_banco
+# DB_USERNAME=usuario_docker
+# DB_PASSWORD=senha_docker
 ```
 
 ### 1.4 Criar o banco de dados
@@ -1052,7 +1054,7 @@ php artisan migrate --seed
 ## Próximo passo
 
 Para ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_DOCKER.md).
-```
+````
 
 ---
 
@@ -1060,7 +1062,7 @@ Para ambiente containerizado, consulte [COMO_EXECUTAR_DOCKER.md](COMO_EXECUTAR_D
 
 O arquivo Docker deve seguir obrigatoriamente esta estrutura:
 
-```markdown
+````markdown
 # Como Executar com Docker — Nome Real do Projeto
 
 Guia para executar o sistema utilizando Docker Desktop.
@@ -1089,17 +1091,17 @@ cp .env.example .env
 Deixe o bloco `DOCKER` ativo e o bloco `LOCAL` comentado:
 
 ```env
-**LOCAL**
-**APP_URL=http://127.0.0.1:8000**
+# LOCAL
+# APP_URL=http://127.0.0.1:8000
 #
-**DB_CONNECTION=mysql**
-**DB_HOST=127.0.0.1**
-**DB_PORT=3307**
-**DB_DATABASE=nome_real_do_banco**
-**DB_USERNAME=root**
-**DB_PASSWORD=**
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3307
+# DB_DATABASE=nome_real_do_banco
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-**DOCKER**
+# DOCKER
 APP_URL=http://localhost:8080
 
 DB_CONNECTION=mysql
@@ -1207,7 +1209,7 @@ docker compose down -v
 ```
 
 > O comando `docker compose down -v` pode apagar os dados do banco.
-```
+````
 
 ---
 
@@ -1251,7 +1253,7 @@ Caso alguma validação não possa ser executada, informe isso claramente no res
 **🎯 RESULTADO ESPERADO**
 
 Ao terminar:
->
+
 - criar ou atualizar `.env.example`;
 - ajustar o `.env` sem apagar segredos ou a `APP_KEY`;
 - criar ou ajustar `Dockerfile`;
@@ -1274,7 +1276,7 @@ Ao terminar:
 
 **Gerador de README Profissional (Padrão Gabriel Martins)**
 
-**🚀 GERADOR DE README PROFISSIONAL (PADRÃO GABRIEL MARTINS)**
+🚀 GERADOR DE README PROFISSIONAL (PADRÃO GABRIEL MARTINS)
 
 Você é um especialista em documentação técnica e GitHub README.
 
@@ -1848,15 +1850,6 @@ Aqui não basta apenas descrever mudanças, é necessário **entender o impacto 
 
 ---
 
-
-# --- PROMPT #41 ---
-
-**Git Push, Description, Topics e README Profissional**
-
-Padronize o nome do repositório para o padrão kebab-case (sistema-blog), crie commits organizados para as alterações pendentes e faça o push para o GitHub. Após o envio, configure a descrição e as tags (topics) do repositório usando a CLI do GitHub (gh) e crie um README.md profissional para o projeto.
-
----
-
 # --- PROMPT #11 ---
 
 **Ajustar Tema Dark/Light e Revisão Geral de UI/UX**
@@ -1883,7 +1876,7 @@ Refatoração e Estabilidade: Reescreva os componentes ou scripts necessários c
 
 ---
 
-# --- PROMPT #27  ---
+# --- PROMPT #27 ---
 
 **Ajustar Todo o Login**
 
@@ -1892,7 +1885,6 @@ O fluxo de login continua falhando. Analise o código do front-end e do back-end
 [⬆ Voltar ao índice](./README.md)
 
 ---
-
 
 # --- PROMPT #29 ---
 
@@ -1930,7 +1922,6 @@ O fluxo de login continua falhando. Analise o código do front-end e do back-end
     });
   
 </pre>
-
 
 [⬆ Voltar ao índice](./README.md)
 
