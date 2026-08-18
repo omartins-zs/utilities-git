@@ -1,41 +1,52 @@
+# Mensagens de Pull Request
 
-Acabei de ajustar a paginação dos kits e já subi pra staging. 
+### Staging / Homologação
 
-Quando puder, dá uma olhadinha lá pra testar por favor, @Larissa Viana 😉
+```bash
+# Ajuste Específico (Com Menção)
+Acabei de ajustar a paginação dos kits e já subi para staging. 
 
+Quando puder, dá uma olhadinha lá para testar por favor, @Larissa Viana 😉
+```
 
----------------------
+```bash
+# Ajuste Geral (Genérico)
+Acabei de realizar o ajuste e já subi para staging. 
 
-O Ajuste foi validado e aprovado card Concluído e enviado para PROD 
+Quando puder, dá uma olhadinha lá para testar por favor 😉
+```
 
-Link do PR: Front-End: 
-Link do PR: Back-End: 
+---
 
--------------------------
+### Produção (PR & Card Aprovado)
 
+```bash
+# Multi-repositório (Front-End & Back-End)
+O ajuste foi validado e aprovado! Card concluído e enviado para PROD.
 
-O Ajuste foi validado e o Card foi aprovado e enviado para PROD 
+Link do PR (Front-End): 
+Link do PR (Back-End): 
+```
 
-Link do PR: Link do PR
+```bash
+# Repositório Único
+O ajuste foi validado e o card foi aprovado e enviado para PROD.
 
+Link do PR: 
+```
 
--------------------------
+---
 
+### Hotfix / Correção Direta em Produção
 
-Acabei de realizar o ajuste e já subi pra staging. 
+```bash
+# Erro em PROD / Aplicação Direta
+Acabei de realizar o ajuste e já subi para PROD. 
 
+Devido ao erro ser em ambiente de produção, a correção já foi aplicada diretamente lá.
 
-Quando puder, dá uma olhadinha lá pra testar por favor, @Larissa Viana  😉
+Quando puder, dá uma olhadinha lá para testar por favor 😉
+Qualquer dúvida ou problema me avisa... 
 
-
--------------------------------------------------------
-
-Acabei de realizar o ajuste e já subi pra PROD. 
-
-Devido o erro ser um PROD, a correção já esta lá....
-
-Quando puder, dá uma olhadinha lá pra testar por favor 😉
-
-Qualquer duvida ou problema me avisa... 
-
-Deixei detalhes aqui:  
+Deixei os detalhes aqui: 
+```
